@@ -1,6 +1,9 @@
 <?php
 
+declare(strict_types=1);
+
 use artifaille\publicstock\model\Product;
+use artifaille\publicstock\dao\ProductDAO;
 
 // This page is public, so we disabled logges user control
 if (!defined("NOLOGIN")) {
@@ -60,6 +63,8 @@ if (!$res) {
     require_once $filename;
 });
 
-$product = new Product();
+global $db;
+$dao = new ProductDAO($db);
+var_dump($dao->readProducts());
 
 echo 'Hello world';

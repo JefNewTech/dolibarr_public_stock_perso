@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace artifaille\publicstock\model;
 
 /**
@@ -8,19 +10,16 @@ namespace artifaille\publicstock\model;
 class Product
 {
     /**
+     * Constructor
+     *
      * @var int Product database id
+     * @var string Product description
+     * @var float Product selling price (taxes included)
      */
-    protected int $id;
-
-
-	/**
-	 * @var string Product description
-	 */
-	protected string $description;
-
-
-	/**
-	 * @var float Product selling price (taxes included)
-	 */
-	protected float $price;
+    public function __construct(
+        protected int $id,
+        protected string $description,
+        protected float $price
+    ) {
+    }
 }
