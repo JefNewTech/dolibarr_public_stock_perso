@@ -49,6 +49,11 @@ if (!$res) {
     die("Include of main fails");
 }
 
+// Make sure Products module is enabled
+if (!\isModEnabled('product')) {
+    \httponly_accessforbidden('Products module must be enabled to use this feature.');
+}
+
 /**
  * END of required section for loading Dolibarr environment, DO NOT MODIFY
  */
