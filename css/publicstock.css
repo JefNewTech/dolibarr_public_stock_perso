@@ -1,0 +1,23 @@
+.products_list {
+	padding: 1rem;
+}
+
+.product {
+	width: 20rem;
+	padding: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	box-shadow: 0.3rem 0.3rem 8px rgba(0, 0, 0, 0.2);
+}
+
+.product_label {}
+
+.product_image {
+	width: 10rem;
+	height: 10rem;
+	margin: 1rem 0;
+	box-shadow: 0.1rem 0.1rem 8px rgba(0, 0, 0, 0.2);
+	border: 1px solid #ccc;
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+}
