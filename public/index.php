@@ -68,8 +68,26 @@ if (!\isModEnabled('product')) {
     require_once $filename;
 });
 
-global $db;
-$dao = new ProductDAO($db);
-var_dump($dao->readProducts());
+global $db, $langs;
 
-echo 'Hello world';
+$content = '';
+$dao = new ProductDAO($db);
+$products = $dao->readProducts();
+if (empty($products)) {
+    $content .= $langs->translate('No product');
+} else {
+    foreach ($products as $product) {
+        $content .= <<<HTML
+			<div class="product">
+				<h3 class="product_name">{$product->getLabel()}</h3>
+				<p class="product_price_stock">{$product->getPrice()} € - {$langs->trans('Stock')} : ???</p>
+				<img class="product_image" alt="product image" src="todo">
+				<p class="product_desc">
+					{$product->getDescription()}
+				</p>
+        	</div>
+HTML;
+    }
+}
+
+echo $content;

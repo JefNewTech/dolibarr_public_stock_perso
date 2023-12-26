@@ -6,10 +6,13 @@ namespace artifaille\publicstock\dao;
 
 use artifaille\publicstock\model\Product;
 
+/**
+ * Reads products and categories in database and outputs PHP objects
+ */
 class ProductDAO
 {
     /**
-     * @var \DoliDb Dolibarr database object
+     * @var \DoliDb Dolibarr object for handling database queries
      */
     protected $doliDB;
 
@@ -18,6 +21,11 @@ class ProductDAO
      */
     protected $tablePrefix;
 
+    /**
+     * Constructor
+     *
+     * @param \DoliDb $doliDB Dolibarr object for handling database queries
+     */
     public function __construct(\DoliDb $doliDB)
     {
         $this->doliDB = $doliDB;
@@ -49,7 +57,7 @@ SQL;
         $row = $this->doliDB->fetch_array($result);
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
-            $products[$rowid] = new Product($rowid, $row['description'], (float)$row['price_ttc']);
+            $products[$rowid] = new Product($row['label'], $row['description'] ?? '', (float)($row['price_ttc'] ?? 0.0));
             $row = $this->doliDB->fetch_array($result);
         }
         return $products;
