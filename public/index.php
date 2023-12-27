@@ -2,6 +2,12 @@
 
 declare(strict_types=1);
 
+?>
+
+<link rel="stylesheet" href="../css/publicstock.css">
+
+<?php
+
 use artifaille\publicstock\model\Product;
 use artifaille\publicstock\dao\ProductDAO;
 
