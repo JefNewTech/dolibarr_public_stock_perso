@@ -12,14 +12,16 @@ class Product
     /**
      * Constructor
      *
-     * @var string Product short label
-     * @var string Product long description
-     * @var float Product selling price (taxes included)
+     * @param string $label Product short label
+     * @param string $description Product long description
+     * @param float $price Product selling price (taxes included)
+     * @param int $stock Number of products left in stock
      */
     public function __construct(
         protected string $label,
         protected string $description,
-        protected float $price
+        protected float $price,
+        protected int $stock
     ) {
     }
 
@@ -51,5 +53,15 @@ class Product
     public function getPrice(): float
     {
         return $this->price;
+    }
+
+    /**
+     * Get number of products left in stock.
+     *
+     * @return int
+     */
+    public function getStock(): int
+    {
+        return $this->stock;
     }
 }

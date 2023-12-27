@@ -86,7 +86,9 @@ if (empty($products)) {
         $content .= <<<HTML
 			<div class="product">
 				<h3 class="product_label">{$product->getLabel()}</h3>
-				<p class="product_price_stock">{$product->getPrice()} € - {$langs->trans('Stock')} : ???</p>
+				<p class="product_price_stock">
+					{$product->getPrice()} € - {$langs->trans('Stock')} : {$product->getStock()}
+				<p>
 				<img class="product_image" alt="product image" src="todo">
 				<p class="product_desc">
 					{$product->getDescription()}

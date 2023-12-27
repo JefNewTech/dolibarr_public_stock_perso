@@ -57,7 +57,12 @@ SQL;
         $row = $this->doliDB->fetch_array($result);
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
-            $products[$rowid] = new Product($row['label'], $row['description'] ?? '', (float)($row['price_ttc'] ?? 0.0));
+            $products[$rowid] = new Product(
+                $row['label'],
+                $row['description'] ?? '',
+                (float)($row['price_ttc'] ?? 0.0),
+                (int)($row['stock'] ?? 0)
+            );
             $row = $this->doliDB->fetch_array($result);
         }
         return $products;
