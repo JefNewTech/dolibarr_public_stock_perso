@@ -21,13 +21,23 @@ class ProductDAO extends DAO
         $products = [];
         $query = <<<SQL
             SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, SUM(ps.reel) AS stock,
-            file.entity, file.filepath, file.filename
+            file.entity, file.filename
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
             LEFT JOIN {$this->tablePrefix}ecm_files AS file
 			ON src_object_type = 'product'
 			AND src_object_id = p.rowid
+			AND (
+				file.filename LIKE "%.gif"
+				OR file.filename LIKE "%.jpg"
+				OR file.filename LIKE "%.jpeg"
+				OR file.filename LIKE "%.png"
+				OR file.filename LIKE "%.bmp"
+				OR file.filename LIKE "%.webp"
+				OR file.filename LIKE "%.xpm"
+				OR file.filename LIKE "%.xbm"
+			)
 			WHERE tosell = 1
 			GROUP BY p.rowid
 			HAVING stock > 0;
