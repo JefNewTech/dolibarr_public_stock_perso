@@ -93,7 +93,7 @@ if (empty($products)) {
 				<p class="product_price_stock">
 					{$product->getPrice()} {$currencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
 				<p>
-				<img class="product_image" alt="product image" src="todo">
+				<img class="product_image" alt="product image" src="{$product->getImageURL()}">
 				<p class="product_desc">
 					{$product->getDescription()}
 				</p>

@@ -21,7 +21,7 @@ class ProductDAO extends DAO
         $products = [];
         $query = <<<SQL
             SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, SUM(ps.reel) AS stock,
-            file.entity, file.filepath, file.ref, file.fullpath_orig, file.filename
+            file.entity, file.filepath, file.filename
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
@@ -36,11 +36,18 @@ SQL;
         $row = $this->doliDB->fetch_array($result);
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
+            $imageURL = (\defined('DOL_MAIN_URL_ROOT') ? (DOL_MAIN_URL_ROOT . '/') : '')
+				. 'document.php?modulepart=product&entity='
+            	. $row['entity']
+            	. '&attachment=0&file='
+            	. $row['productRef'] . '/'
+            	. $row['filename'];
             $products[$rowid] = new Product(
                 $row['label'],
                 $row['description'] ?? '',
                 (float)($row['price_ttc'] ?? 0.0),
-                (int)($row['stock'] ?? 0)
+                (int)($row['stock'] ?? 0),
+				$imageURL
             );
             $row = $this->doliDB->fetch_array($result);
         }

@@ -12,16 +12,18 @@ class Product
     /**
      * Constructor
      *
-     * @param string $label Product short label
+     * @param string $label       Product short label
      * @param string $description Product long description
-     * @param float $price Product selling price (taxes included)
-     * @param int $stock Number of products left in stock
+     * @param float  $price       Product selling price (taxes included)
+     * @param int    $stock       Number of products left in stock
+     * @param string $imageURL    URL of image file
      */
     public function __construct(
         protected string $label,
         protected string $description,
         protected float $price,
-        protected int $stock
+        protected int $stock,
+        protected string $imageURL
     ) {
     }
 
@@ -63,5 +65,15 @@ class Product
     public function getStock(): int
     {
         return $this->stock;
+    }
+
+    /**
+     * Get URL of image file.
+     *
+     * @return string
+     */
+    public function getImageURL(): string
+    {
+        return $this->imageURL;
     }
 }
