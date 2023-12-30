@@ -9,29 +9,8 @@ use artifaille\publicstock\model\Product;
 /**
  * Reads products and categories in database and outputs PHP objects
  */
-class ProductDAO
+class ProductDAO extends DAO
 {
-    /**
-     * @var \DoliDb Dolibarr object for handling database queries
-     */
-    protected $doliDB;
-
-    /**
-     * @var string Prefix on table names in database
-     */
-    protected $tablePrefix;
-
-    /**
-     * Constructor
-     *
-     * @param \DoliDb $doliDB Dolibarr object for handling database queries
-     */
-    public function __construct(\DoliDb $doliDB)
-    {
-        $this->doliDB = $doliDB;
-        $this->tablePrefix = \defined('MAIN_DB_PREFIX') ? \constant('MAIN_DB_PREFIX') : '';
-    }
-
     /**
      * Fetch products that are available to sell (tosell = 1, stock > 0)
      *

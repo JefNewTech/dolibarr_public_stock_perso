@@ -10,6 +10,7 @@ declare(strict_types=1);
 
 use artifaille\publicstock\model\Product;
 use artifaille\publicstock\dao\ProductDAO;
+use artifaille\publicstock\dao\CurrencyDAO;
 
 // This page is public, so we disabled logges user control
 if (!defined("NOLOGIN")) {
@@ -79,6 +80,7 @@ global $db, $langs;
 $content = '';
 $dao = new ProductDAO($db);
 $products = $dao->readProducts();
+$currency = $langs->getCurrencySymbol((new CurrencyDAO($db))->readMainCurrency());
 if (empty($products)) {
     $content .= $langs->translate('No product');
 } else {
@@ -87,7 +89,7 @@ if (empty($products)) {
 			<div class="product">
 				<h3 class="product_label">{$product->getLabel()}</h3>
 				<p class="product_price_stock">
-					{$product->getPrice()} € - {$langs->trans('Stock')} : {$product->getStock()}
+					{$product->getPrice()} {$currency} - {$langs->trans('Stock')} : {$product->getStock()}
 				<p>
 				<img class="product_image" alt="product image" src="todo">
 				<p class="product_desc">
