@@ -74,12 +74,12 @@ if (!\isModEnabled('product')) {
     require_once $filename;
 });
 
-global $db, $langs;
+global $conf, $db, $langs;
 
 // Read data
 $dao = new ProductDAO($db);
 $products = $dao->readProducts();
-$currency = $langs->getCurrencySymbol((new CurrencyDAO($db))->readMainCurrency());
+$currencySymbol = $langs->getCurrencySymbol($conf->currency);
 
 // Display
 $content = '';
@@ -91,7 +91,7 @@ if (empty($products)) {
 			<div class="product">
 				<h3 class="product_label">{$product->getLabel()}</h3>
 				<p class="product_price_stock">
-					{$product->getPrice()} {$currency} - {$langs->trans('Stock')} : {$product->getStock()}
+					{$product->getPrice()} {$currencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
 				<p>
 				<img class="product_image" alt="product image" src="todo">
 				<p class="product_desc">
