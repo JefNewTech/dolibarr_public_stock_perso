@@ -12,7 +12,7 @@ use artifaille\publicstock\model\Product;
 use artifaille\publicstock\dao\ProductDAO;
 use artifaille\publicstock\dao\CurrencyDAO;
 
-// This page is public, so we disabled logges user control
+// This page is public, so we disabled logged user control
 if (!defined("NOLOGIN")) {
     define("NOLOGIN", '1');
 }
@@ -55,15 +55,14 @@ if (!$res && \file_exists("../../../main.inc.php")) {
 if (!$res) {
     die("Include of main fails");
 }
+/**
+ * END of required section for loading Dolibarr environment, DO NOT MODIFY
+ */
 
 // Make sure Products module is enabled
 if (!\isModEnabled('product')) {
     \httponly_accessforbidden('Products module must be enabled to use this feature.');
 }
-
-/**
- * END of required section for loading Dolibarr environment, DO NOT MODIFY
- */
 
 // Setup PSR-4 class autoload
 \spl_autoload_register(function ($className) {
@@ -77,10 +76,13 @@ if (!\isModEnabled('product')) {
 
 global $db, $langs;
 
-$content = '';
+// Read data
 $dao = new ProductDAO($db);
 $products = $dao->readProducts();
 $currency = $langs->getCurrencySymbol((new CurrencyDAO($db))->readMainCurrency());
+
+// Display
+$content = '';
 if (empty($products)) {
     $content .= $langs->translate('No product');
 } else {
@@ -99,5 +101,4 @@ if (empty($products)) {
 HTML;
     }
 }
-
 echo $content;

@@ -21,7 +21,6 @@ class CurrencyDAO extends DAO
 			FROM {$this->tablePrefix}const
 			WHERE name = 'MAIN_MONNAIE';
 SQL;
-		echo $query;
         $result = $this->doliDB->query($query);
         return $this->doliDB->fetch_row($result)[0] ?? '';
     }
