@@ -87,13 +87,26 @@ if (empty($products)) {
     $content .= $langs->translate('No product');
 } else {
     foreach ($products as $product) {
+		if ($product->getImageName() === '') {
+			$imageBlock = '';
+		} else {
+            $imageURL = (\defined('DOL_MAIN_URL_ROOT') ? (DOL_MAIN_URL_ROOT . '/') : '')
+				. 'document.php?modulepart=product&entity='
+            	. $product->getEntityId()
+            	. '&attachment=0&file='
+            	. $product->getReference() . '/'
+            	. $product->getImageName();
+			$imageBlock = <<<HTML
+				<img class="product_image" alt="product image" src="{$imageURL}">
+HTML;
+		}
         $content .= <<<HTML
 			<div class="product">
 				<h3 class="product_label">{$product->getLabel()}</h3>
 				<p class="product_price_stock">
 					{$product->getPrice()} {$currencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
 				<p>
-				<img class="product_image" alt="product image" src="{$product->getImageURL()}">
+				{$imageBlock}
 				<p class="product_desc">
 					{$product->getDescription()}
 				</p>

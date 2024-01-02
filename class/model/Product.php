@@ -12,19 +12,43 @@ class Product
     /**
      * Constructor
      *
-     * @param string $label       Product short label
+     * @param int $entityId ID of product entity
+     * @param string $ref Product reference
+     * @param string $label Product short label
      * @param string $description Product long description
-     * @param float  $price       Product selling price (taxes included)
-     * @param int    $stock       Number of products left in stock
-     * @param string $imageURL    URL of image file
+     * @param float $price Product selling price (taxes included)
+     * @param int $stock Number of products left in stock
+     * @param string $imageName Name of image file
      */
     public function __construct(
+        protected int $entityId,
+        protected string $reference,
         protected string $label,
         protected string $description,
         protected float $price,
         protected int $stock,
-        protected string $imageURL
+        protected string $imageName
     ) {
+    }
+
+    /**
+ 	 * Get ID of product entity
+ 	 *
+ 	 * @return int
+ 	 */
+    public function getEntityId(): int
+    {
+        return $this->entityId;
+    }
+
+    /**
+ 	 * Get product reference
+ 	 *
+ 	 * @return string
+ 	 */
+    public function getReference(): string
+    {
+        return $this->reference;
     }
 
     /**
@@ -68,12 +92,12 @@ class Product
     }
 
     /**
-     * Get URL of image file.
+     * Get name of image file.
      *
      * @return string
      */
-    public function getImageURL(): string
+    public function getImageName(): string
     {
-        return $this->imageURL;
+        return $this->imageName;
     }
 }
