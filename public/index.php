@@ -58,17 +58,6 @@ global $conf, $db, $langs;
 
 $psTitle = $conf->global->PUBLICSTOCK_TITLE ?? 'Public stock';
 
-?>
-
-<!doctype html>
-<head>
-<link rel="stylesheet" href="../css/publicstock.css">
-<title><?php echo $psTitle ?></title>
-</head>
-<body>
-    <h1 class="ps_title"><?php echo $psTitle ?></h1>
-
-<?php
 // Make sure Products module is enabled
 if (!\isModEnabled('product')) {
     \httponly_accessforbidden('Products module must be enabled to use this feature.');
@@ -92,41 +81,4 @@ $psDao = new ProductDAO($db);
 $psProducts = $psDao->readProducts();
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 
-// Display
-$psContent = '';
-if (empty($psProducts)) {
-    $psContent .= $langs->translate('No product');
-} else {
-    foreach ($psProducts as $product) {
-        if ($product->getImageName() === '') {
-            $imageBlock = '';
-        } else {
-            $imageURL = (\defined('DOL_MAIN_URL_ROOT') ? (DOL_MAIN_URL_ROOT . '/') : '')
-            . 'document.php?modulepart=product&entity='
-                . $product->getEntityId()
-                . '&attachment=0&file='
-                . $product->getReference() . '/'
-                . $product->getImageName();
-            $imageBlock = <<<HTML
-				<img class="ps_product_image" alt="Product image" src="{$imageURL}">
-HTML;
-        }
-        $psContent .= <<<HTML
-			<div class="ps_product">
-				<h3 class="ps_product_label">{$product->getLabel()}</h3>
-				<p class="ps_product_price_stock">
-					{$product->getPrice()} {$psCurrencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
-				<p>
-				{$imageBlock}
-				<p class="ps_product_desc">
-					{$product->getDescription()}
-				</p>
-        	</div>
-HTML;
-    }
-}
-echo $psContent;
-?>
-
-</body>
-</html>
+require_once __DIR__ . '/../tpl/index.html.php';
