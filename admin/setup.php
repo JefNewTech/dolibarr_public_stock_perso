@@ -102,7 +102,7 @@ $formSetup = new FormSetup($db);
 // $item->fieldOverride = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
 
 // Setup conf PUBLICSTOCK_MYPARAM1 as a simple string input
-$item = $formSetup->newItem('PUBLICSTOCK_PAGE_TITLE');
+$item = $formSetup->newItem('PUBLICSTOCK_TITLE');
 $item->defaultFieldValue = 'Public Stock';
 $item->helpText = 'PUBLICSTOCK_PAGE_TITLE_HELP';
 
