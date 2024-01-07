@@ -2,11 +2,6 @@
 
 declare(strict_types=1);
 
-?>
-
-<link rel="stylesheet" href="../css/publicstock.css">
-
-<?php
 
 use artifaille\publicstock\model\Product;
 use artifaille\publicstock\dao\ProductDAO;
@@ -59,6 +54,19 @@ if (!$res) {
  * END of required section for loading Dolibarr environment, DO NOT MODIFY
  */
 
+// Load necessary Dolibarr globals
+global $conf, $db, $langs;
+
+?>
+<!doctype html>
+<head>
+<link rel="stylesheet" href="../css/publicstock.css">
+<title><?= $conf->global->PUBLICSTOCK_PAGE_TITLE ?></title>
+</head>
+<body>
+	<h1><?= $conf->global->PUBLICSTOCK_PAGE_TITLE ?></h1>
+
+<?php
 // Make sure Products module is enabled
 if (!\isModEnabled('product')) {
     \httponly_accessforbidden('Products module must be enabled to use this feature.');
@@ -74,7 +82,6 @@ if (!\isModEnabled('product')) {
     require_once $filename;
 });
 
-global $conf, $db, $langs;
 
 // Read data
 $dao = new ProductDAO($db);
@@ -115,3 +122,7 @@ HTML;
     }
 }
 echo $content;
+?>
+
+</body>
+</html>
