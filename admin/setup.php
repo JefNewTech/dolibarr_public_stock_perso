@@ -104,7 +104,6 @@ $formSetup = new FormSetup($db);
 // Page title
 $item = $formSetup->newItem('PUBLICSTOCK_TITLE');
 $item->defaultFieldValue = 'Public Stock';
-$item->helpText = 'PUBLICSTOCK_TITLE_HELP';
 
 // Show / hide out of stock products
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_OUT_OF_STOCK');

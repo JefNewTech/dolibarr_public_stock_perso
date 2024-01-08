@@ -18,37 +18,15 @@
 #
 
 # Module label 'ModulePublicStockName'
-ModulePublicStockName = PublicStock
+ModulePublicStockName = Public Stock
 # Module description 'ModulePublicStockDesc'
-ModulePublicStockDesc = PublicStock description
+ModulePublicStockDesc = Create a public page of your products to sell
 
 #
 # Admin page
 #
 PublicStockSetup = PublicStock setup
 Settings = Settings
-PublicStockSetupPage = PublicStock setup page
-PUBLICSTOCK_MYPARAM1 = My param 1
-PUBLICSTOCK_MYPARAM1Tooltip = My param 1 tooltip
-PUBLICSTOCK_MYPARAM2=My param 2
-PUBLICSTOCK_MYPARAM2Tooltip=My param 2 tooltip
-
-
-#
-# About page
-#
-About = About
-PublicStockAbout = About PublicStock
-PublicStockAboutPage = PublicStock about page
-
-#
-# Sample page
-#
-PublicStockArea = Home PublicStock
-MyPageName = My page name
-
-#
-# Sample widget
-#
-MyWidget = My widget
-MyWidgetDescription = My widget description
+PublicStockSetupPage = Define the content of your products public page
+PUBLICSTOCK_TITLE = Page title
+PUBLICSTOCK_SHOW_OUT_OF_STOCK = Show products currently out of stock

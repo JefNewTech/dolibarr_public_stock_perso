@@ -1,0 +1,14 @@
+#
+# Generic
+#
+ModulePublicStockName = Stock Public
+ModulePublicStockDesc = Créez une page publique de produits à vendre
+
+#
+# Admin page
+#
+PublicStockSetup = Paramètres de PublicStock
+Settings = Paramètres
+PublicStockSetupPage = Définissez le contenu de votre page publique de produits
+PUBLICSTOCK_TITLE = Titre de la page
+PUBLICSTOCK_SHOW_OUT_OF_STOCK = Afficher les produits actuellement en rupture de stock
