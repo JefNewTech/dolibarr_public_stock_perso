@@ -14,18 +14,20 @@ class ProductDAO extends DAO
     /**
      * Fetch products that are available to sell (tosell = 1, stock > 0)
      *
+     * @param  bool $includeOutOfStock Include products that are currently out of stock
      * @return Product[] Products found
      */
-    public function readProducts(): array
+    public function readProducts(bool $includeOutOfStock): array
     {
         $products = [];
+        $stockFilter = $includeOutOfStock ? '' : 'HAVING stock > 0';
         $query = <<<SQL
             SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, SUM(ps.reel) AS stock,
             file.entity, file.filename
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
-            LEFT JOIN {$this->tablePrefix}ecm_files AS file
+        	LEFT JOIN {$this->tablePrefix}ecm_files AS file
 			ON src_object_type = 'product'
 			AND src_object_id = p.rowid
 			AND (
@@ -40,20 +42,20 @@ class ProductDAO extends DAO
 			)
 			WHERE tosell = 1
 			GROUP BY p.rowid
-			HAVING stock > 0;
+			{$stockFilter};
 SQL;
         $result = $this->doliDB->query($query);
         $row = $this->doliDB->fetch_array($result);
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
             $products[$rowid] = new Product(
-				(int)$row['entity'],
-				$row['productRef'],
+                (int)$row['entity'],
+                $row['productRef'],
                 $row['label'],
                 $row['description'] ?? '',
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
-				$row['filename'] ?? ''
+                $row['filename'] ?? ''
             );
             $row = $this->doliDB->fetch_array($result);
         }

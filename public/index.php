@@ -78,7 +78,8 @@ if (!\isModEnabled('product')) {
 
 // Read data
 $psDao = new ProductDAO($db);
-$psProducts = $psDao->readProducts();
+$psShowOutOfStock = (bool)($conf->global->PUBLICSTOCK_SHOW_OUT_OF_STOCK ?? false);
+$psProducts = $psDao->readProducts($psShowOutOfStock);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 
 require_once __DIR__ . '/../tpl/index.html.php';

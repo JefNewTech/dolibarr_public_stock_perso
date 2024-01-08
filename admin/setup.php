@@ -101,10 +101,15 @@ $formSetup = new FormSetup($db);
 // $item = $formSetup->newItem('NO_PARAM_JUST_TEXT');
 // $item->fieldOverride = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
 
-// Setup conf PUBLICSTOCK_MYPARAM1 as a simple string input
+// Page title
 $item = $formSetup->newItem('PUBLICSTOCK_TITLE');
 $item->defaultFieldValue = 'Public Stock';
-$item->helpText = 'PUBLICSTOCK_PAGE_TITLE_HELP';
+$item->helpText = 'PUBLICSTOCK_TITLE_HELP';
+
+// Show / hide out of stock products
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_OUT_OF_STOCK');
+$item->setAsYesNo();
+
 
 // Setup conf PUBLICSTOCK_MYPARAM2 as a simple textarea input but we replace the text of field title
 // $item = $formSetup->newItem('PUBLICSTOCK_MYPARAM2');
