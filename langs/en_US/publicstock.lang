@@ -16,11 +16,10 @@
 #
 # Generic
 #
-
-# Module label 'ModulePublicStockName'
 ModulePublicStockName = Public Stock
-# Module description 'ModulePublicStockDesc'
 ModulePublicStockDesc = Create a public page of your products to sell
+Uncategorized = Uncategorized
+NoProductToDisplay = No product to display
 
 #
 # Admin page

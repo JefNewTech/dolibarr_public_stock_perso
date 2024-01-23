@@ -9,6 +9,11 @@ namespace artifaille\publicstock\model;
  */
 class Product
 {
+	/**
+      * Fake category ID used for uncategorized products
+      */
+	public const UNCATEGORIZED = -1;
+
     /**
      * Constructor
      *
@@ -19,6 +24,7 @@ class Product
      * @param float $price Product selling price (taxes included)
      * @param int $stock Number of products left in stock
      * @param string $imageName Name of image file
+     * @param ?int $categoryId ID of product category, or null if uncategorized
      */
     public function __construct(
         protected int $entityId,
@@ -27,25 +33,26 @@ class Product
         protected string $description,
         protected float $price,
         protected int $stock,
-        protected string $imageName
+        protected string $imageName,
+        protected int $categoryId
     ) {
     }
 
     /**
- 	 * Get ID of product entity
- 	 *
- 	 * @return int
- 	 */
+     * Get ID of product entity
+     *
+     * @return int
+     */
     public function getEntityId(): int
     {
         return $this->entityId;
     }
 
     /**
- 	 * Get product reference
- 	 *
- 	 * @return string
- 	 */
+     * Get product reference
+     *
+     * @return string
+     */
     public function getReference(): string
     {
         return $this->reference;
@@ -99,5 +106,15 @@ class Product
     public function getImageName(): string
     {
         return $this->imageName;
+    }
+
+    /**
+    * Get ID of product category.
+    *
+    * @return int ID of product category, or null if uncategorized
+    */
+    public function getCategoryId(): int
+    {
+        return $this->categoryId;
     }
 }

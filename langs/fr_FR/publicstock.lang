@@ -3,6 +3,8 @@
 #
 ModulePublicStockName = Stock Public
 ModulePublicStockDesc = Créez une page publique de produits à vendre
+Uncategorized = Sans catégorie
+NoProductToDisplay = Aucun produit à afficher
 
 #
 # Admin page

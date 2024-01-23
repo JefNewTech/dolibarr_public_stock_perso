@@ -7,7 +7,7 @@ namespace artifaille\publicstock\dao;
 use artifaille\publicstock\model\Product;
 
 /**
- * Reads products and categories in database and outputs PHP objects
+ * Reads products in database and outputs PHP objects
  */
 class ProductDAO extends DAO
 {
@@ -23,7 +23,7 @@ class ProductDAO extends DAO
         $stockFilter = $includeOutOfStock ? '' : 'HAVING stock > 0';
         $query = <<<SQL
             SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, SUM(ps.reel) AS stock,
-            file.entity, file.filename
+            file.entity, file.filename, cp.fk_categorie AS categoryId
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
@@ -40,6 +40,8 @@ class ProductDAO extends DAO
 				OR file.filename LIKE "%.xpm"
 				OR file.filename LIKE "%.xbm"
 			)
+			LEFT JOIN {$this->tablePrefix}categorie_product AS cp
+			ON cp.fk_product = p.rowid
 			WHERE tosell = 1
 			GROUP BY p.rowid
 			{$stockFilter};
@@ -48,14 +50,16 @@ SQL;
         $row = $this->doliDB->fetch_array($result);
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
-            $products[$rowid] = new Product(
+            $categoryId = (int)($row['categoryId'] ?? -1);
+            $products[$categoryId][$rowid] = new Product(
                 (int)$row['entity'],
                 $row['productRef'],
                 $row['label'],
                 $row['description'] ?? '',
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
-                $row['filename'] ?? ''
+                $row['filename'] ?? '',
+				(int)($rox['categoryId'] ?? Product::UNCATEGORIZED)
             );
             $row = $this->doliDB->fetch_array($result);
         }

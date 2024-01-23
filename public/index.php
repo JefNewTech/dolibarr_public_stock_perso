@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use artifaille\publicstock\dao\CategoryDAO;
 use artifaille\publicstock\model\Product;
 use artifaille\publicstock\dao\ProductDAO;
 use artifaille\publicstock\dao\CurrencyDAO;
@@ -55,6 +56,7 @@ if (!$res) {
 
 // Load necessary Dolibarr globals
 global $conf, $db, $langs;
+$langs->loadLangs(['publicstock@publicstock']);
 
 $psTitle = $conf->global->PUBLICSTOCK_TITLE ?? 'Public stock';
 
@@ -77,9 +79,11 @@ if (!\isModEnabled('product')) {
 
 
 // Read data
-$psDao = new ProductDAO($db);
+$psProductDao = new ProductDAO($db);
+$psCategoryDao = new CategoryDAO($db);
 $psShowOutOfStock = (bool)($conf->global->PUBLICSTOCK_SHOW_OUT_OF_STOCK ?? false);
-$psProducts = $psDao->readProducts($psShowOutOfStock);
+$psCategories = $psCategoryDao->readProductCategories();
+$psProducts = $psProductDao->readProducts($psShowOutOfStock);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 
 require_once __DIR__ . '/../tpl/index.html.php';
