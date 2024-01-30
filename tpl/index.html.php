@@ -1,6 +1,8 @@
 <!doctype html>
 <head>
-    <?php \top_htmlhead('', $psTitle, 0, 0, ['publicstock/js/publicstock.js'], [], 1, 1, 1); ?>
+    <?php
+    $customCss = ($psTheme === '') ? [] : ['publicstock/css/' . $psTheme . '.css'];
+    \top_htmlhead('', $psTitle, 0, 0, ['publicstock/js/publicstock.js'], $customCss, 1, 1, 1); ?>
 </head>
 <body>
     <article class="ps_main">
@@ -12,30 +14,30 @@
         } else {
             $uncategorizedLabel = $langs->trans('Uncategorized');
 
-			// Enable categories tabs only if there is more than one category
-			if (\count($psProducts) > 1) {
-			    $withCategories = true;
-				$cssCategories = 'ps_withCategories';
-			} else {
-			    $withCategories = false;
-			    $cssCategories = 'ps_withoutCategories';
-			}
+            // Enable categories tabs only if there is more than one category
+            if (\count($psProducts) > 1) {
+                $withCategories = true;
+                $cssCategories = 'ps_withCategories';
+            } else {
+                $withCategories = false;
+                $cssCategories = 'ps_withoutCategories';
+            }
             ?>
-				<div id="ps_categories" class="<?= $cssCategories ?>">
-				<?php
-				if ($withCategories) {
-				?>
-                	<ul class="ps_tabs">
-                	<?php
-                	foreach ($psProducts as $categoryId => $products) {
-                    	$categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
-                    	?>
-                    	<li class="ps_tab_title">
-                        	<a href="#tab_<?= $categoryId ?>"><?= $categoryLabel ?></a>
-                    	</li>
-                	<?php } ?>
-                	</ul>
-				<?php } ?>
+                <div id="ps_categories" class="<?= $cssCategories ?>">
+                <?php
+                if ($withCategories) {
+                    ?>
+                    <ul class="ps_tabs">
+                    <?php
+                    foreach ($psProducts as $categoryId => $products) {
+                        $categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
+                        ?>
+                        <li class="ps_tab_title">
+                            <a href="#tab_<?= $categoryId ?>"><?= $categoryLabel ?></a>
+                        </li>
+                    <?php } ?>
+                    </ul>
+                <?php } ?>
             <?php
             foreach ($psProducts as $categoryId => $products) {
                 $categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
