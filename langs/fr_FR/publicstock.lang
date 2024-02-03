@@ -16,3 +16,7 @@ PUBLICSTOCK_TITLE = Titre de la page
 PUBLICSTOCK_SHOW_OUT_OF_STOCK = Afficher les produits actuellement en rupture de stock
 PUBLICSTOCK_THEME = Thème
 PUBLICSTOCK_THEME_HELP = Choisissez un thème, que vous pouvez personnaliser en ajoutant du code CSS ci-dessous, ou sélectionnez "Aucun" pour créer entièrement votre propre thème
+PUBLICSTOCK_CSS = Code CSS personnalisé
+PUBLICSTOCK_CSS_HELP = Ajoutez votre propre code CSS pour personnaliser ou créer votre thème
+PUBLICSTOCK_CONTENT = Contenu de la page
+PUBLICSTOCK_APPEARANCE = Apparence de la page
