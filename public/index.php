@@ -86,5 +86,6 @@ $psCategories = $psCategoryDao->readProductCategories();
 $psProducts = $psProductDao->readProducts($psShowOutOfStock);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 $psTheme = $conf->global->PUBLICSTOCK_THEME ?? '';
+$psCss = $conf->global->PUBLICSTOCK_CSS ?? '';
 
 require_once __DIR__ . '/../tpl/index.html.php';

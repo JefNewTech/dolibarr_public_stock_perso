@@ -124,6 +124,11 @@ $item->setAsSelect([
     'theme2' => 'theme2'
 ]);
 
+// Custom CSS code
+$item = $formSetup->newItem('PUBLICSTOCK_CSS');
+$item->helpText = $langs->trans('PUBLICSTOCK_CSS_HELP');
+$item->setAsTextarea();
+
 // Setup conf PUBLICSTOCK_MYPARAM2 as a simple textarea input but we replace the text of field title
 // $item = $formSetup->newItem('PUBLICSTOCK_MYPARAM2');
 // $item->nameText = $item->getNameText().' more html text ';
