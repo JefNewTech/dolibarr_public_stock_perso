@@ -99,6 +99,7 @@ if (!class_exists('FormSetup')) {
     }
 }
 
+
 $formSetup = new FormSetup($db);
 
 
@@ -324,8 +325,11 @@ $head = publicstockAdminPrepareHead();
 print dol_get_fiche_head($head, 'settings', $langs->trans($page_name), -1, "publicstock@publicstock");
 
 // Setup page goes here
-echo '<span class="opacitymedium">' . $langs->trans("PublicStockSetupPage") . '</span><br><br>';
-
+echo <<<HTML
+<span class="opacitymedium">{$langs->trans("PublicStockSetupPage")}</span>
+<a href="../public/index.php">{$langs->trans('PublicStockTry')}</a>
+<br><br>
+HTML;
 
 if ($action == 'edit') {
     print $formSetup->generateOutput(true);

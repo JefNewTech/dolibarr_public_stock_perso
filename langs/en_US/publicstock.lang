@@ -26,7 +26,8 @@ NoProductToDisplay = No product to display
 #
 PublicStockSetup = PublicStock setup
 Settings = Settings
-PublicStockSetupPage = Define the content of your products public page
+PublicStockSetupPage = Define the content of your products public page,
+PublicStockTry = then try it
 PUBLICSTOCK_TITLE = Page title
 PUBLICSTOCK_SHOW_OUT_OF_STOCK = Show products currently out of stock
 PUBLICSTOCK_THEME = Theme
