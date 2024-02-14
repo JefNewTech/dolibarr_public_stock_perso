@@ -22,7 +22,8 @@ class ProductDAO extends DAO
         $products = [];
         $stockFilter = $includeOutOfStock ? '' : 'HAVING stock > 0';
         $query = <<<SQL
-            SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, SUM(ps.reel) AS stock,
+        	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc,
+			SUM(ps.reel) AS stock,
             file.entity, file.filename, cp.fk_categorie AS categoryId
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
@@ -59,7 +60,8 @@ SQL;
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
                 $row['filename'] ?? '',
-				(int)($rox['categoryId'] ?? Product::UNCATEGORIZED)
+				(int)($row['categoryId'] ?? Product::UNCATEGORIZED),
+				''
             );
             $row = $this->doliDB->fetch_array($result);
         }

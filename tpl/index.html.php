@@ -77,8 +77,16 @@ HTML;
 HTML; ?>
                         <?= $imageBlock ?>
                         <p class="ps_product_desc">
-                            <?= $product->getDescription() ?>
+    				<?= $product->getDescription() ?>
                         </p>
+						<ul>
+						<?php if ($psShowNature) { ?>
+                            <li class="ps_product_finished">
+								<label><?= $langs->trans('NatureOfProductShort') ?></label>
+							    <span><?= $langs->trans($product->getNature()) ?></span>
+							</li>
+						<?php } ?>
+						</ul>
                     </div>
                     <?php
                 }

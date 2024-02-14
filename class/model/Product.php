@@ -24,7 +24,8 @@ class Product
      * @param float $price Product selling price (taxes included)
      * @param int $stock Number of products left in stock
      * @param string $imageName Name of image file
-     * @param ?int $categoryId ID of product category, or null if uncategorized
+     * @param int $categoryId ID of product category
+     * @param string $string Label of product nature
      */
     public function __construct(
         protected int $entityId,
@@ -34,7 +35,8 @@ class Product
         protected float $price,
         protected int $stock,
         protected string $imageName,
-        protected int $categoryId
+        protected int $categoryId,
+		protected string $nature
     ) {
     }
 
@@ -111,10 +113,20 @@ class Product
     /**
     * Get ID of product category.
     *
-    * @return int ID of product category, or null if uncategorized
+    * @return int ID of product category
     */
     public function getCategoryId(): int
     {
         return $this->categoryId;
+    }
+
+	/**
+ 	 * Get label of product nature.
+ 	 *
+ 	 * @return string
+ 	 */
+    public function getNature(): string
+    {
+        return $this->nature;
     }
 }
