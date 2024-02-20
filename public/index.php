@@ -56,7 +56,7 @@ if (!$res) {
 
 // Load necessary Dolibarr globals
 global $conf, $db, $langs;
-$langs->loadLangs(['publicstock@publicstock']);
+$langs->loadLangs(['products', 'publicstock@publicstock']);
 
 $psTitle = $conf->global->PUBLICSTOCK_TITLE ?? 'Public stock';
 
