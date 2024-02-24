@@ -25,7 +25,7 @@ class Product
      * @param int $stock Number of products left in stock
      * @param string $imageName Name of image file
      * @param int $categoryId ID of product category
-     * @param bool $finished true if it's a finished product, false if it's raw goods
+     * @param string $nature Internal label of product nature
      */
     public function __construct(
         protected int $entityId,
@@ -36,7 +36,7 @@ class Product
         protected int $stock,
         protected string $imageName,
         protected int $categoryId,
-		protected bool $finished
+		protected string $nature,
     ) {
     }
 
@@ -121,12 +121,12 @@ class Product
     }
 
 	/**
- 	 * Checks if it's a finished product
+ 	 * Get product nature
  	 *
- 	 * @return bool true if it's a finished product, false if it's raw goods
+ 	 * @return string Internal label of product nature
  	 */
-    public function isFinished(): bool
+    public function getNature(): string
     {
-        return $this->finished;
+        return $this->nature;
     }
 }

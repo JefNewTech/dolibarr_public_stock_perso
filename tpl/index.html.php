@@ -90,13 +90,7 @@ HTML;
 						<?php if ($psShowNature) { ?>
                             <li class="ps_product_finished">
 								<label><?= $langs->trans('NatureOfProductShort') ?></label>
-							    <span>
-								<?php
-									echo $product->isFinished()
-										? $langs->trans('Finished')
-										: $langs->trans('RowMaterial');
-								?>
-								</span>
+							    <span><?= $langs->trans($product->getNature()) ?></span>
 							</li>
 						<?php } ?>
 						</ul>
