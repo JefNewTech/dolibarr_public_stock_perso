@@ -11,7 +11,7 @@ NoProductToDisplay = Aucun produit à afficher
 #
 PublicStockSetup = Paramètres du Stock Public
 Settings = Paramètres
-PublicStockSetupPage = Définissez le contenu de votre page publique de produits,
+PublicStockSetupPage = Définissez le contenu et l'apparence de votre page publique de produits,
 PublicStockTry = puis testez-là
 PUBLICSTOCK_TITLE = Titre de la page
 PUBLICSTOCK_SHOW_OUT_OF_STOCK = Afficher les produits actuellement en rupture de stock
