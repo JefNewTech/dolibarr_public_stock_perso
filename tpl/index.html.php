@@ -71,17 +71,22 @@ HTML;
                     ?>
                     <div class="ps_product">
                         <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
-                        <p class="ps_product_price_stock">
-                        <?= <<<HTML
-					{$product->getPrice()} {$psCurrencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
-HTML; ?>
+                        <p class="ps_product_price">
+                        	<?= $product->getPrice() . ' ' . $psCurrencySymbol ?>
+						</p>
                         <?= $imageBlock ?>
 					<?php if ($psShowDescription) { ?>
                         <p class="ps_product_desc">
-    					<?= $product->getDescription() ?>
+    						<?= $product->getDescription() ?>
                         </p>
 					<?php } ?>
 						<ul>
+						<?php if ($psShowStock) { ?>
+                            <li class="ps_product_stock">
+								<label><?= $langs->trans('Stock') ?></label>
+							    <span><?= $product->getStock() ?></span>
+							</li>
+						<?php } ?>
 						<?php if ($psShowNature) { ?>
                             <li class="ps_product_finished">
 								<label><?= $langs->trans('NatureOfProductShort') ?></label>

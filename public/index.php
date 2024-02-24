@@ -89,6 +89,7 @@ $psTheme = $conf->global->PUBLICSTOCK_THEME ?? '';
 $psCss = $conf->global->PUBLICSTOCK_CSS ?? '';
 $psShowImage = (bool)($conf->global->PUBLICSTOCK_SHOW_IMAGE ?? false);
 $psShowDescription = (bool)($conf->global->PUBLICSTOCK_SHOW_DESCRIPTION ?? false);
+$psShowStock = (bool)($conf->global->PUBLICSTOCK_SHOW_STOCK ?? false);
 $psShowNature = (bool)($conf->global->PUBLICSTOCK_SHOW_NATURE ?? false);
 
 require_once __DIR__ . '/../tpl/index.html.php';
