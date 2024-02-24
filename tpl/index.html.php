@@ -76,9 +76,11 @@ HTML;
 					{$product->getPrice()} {$psCurrencySymbol} - {$langs->trans('Stock')} : {$product->getStock()}
 HTML; ?>
                         <?= $imageBlock ?>
+					<?php if ($psShowDescription) { ?>
                         <p class="ps_product_desc">
-    				<?= $product->getDescription() ?>
+    					<?= $product->getDescription() ?>
                         </p>
+					<?php } ?>
 						<ul>
 						<?php if ($psShowNature) { ?>
                             <li class="ps_product_finished">

@@ -87,6 +87,7 @@ $psProducts = $psProductDao->readProducts($psShowOutOfStock);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 $psTheme = $conf->global->PUBLICSTOCK_THEME ?? '';
 $psCss = $conf->global->PUBLICSTOCK_CSS ?? '';
+$psShowDescription = (bool)($conf->global->PUBLICSTOCK_SHOW_DESCRIPTION ?? false);
 $psShowNature = (bool)($conf->global->PUBLICSTOCK_SHOW_NATURE ?? false);
 
 require_once __DIR__ . '/../tpl/index.html.php';
