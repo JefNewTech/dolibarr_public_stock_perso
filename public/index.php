@@ -87,6 +87,7 @@ $psProducts = $psProductDao->readProducts($psShowOutOfStock);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 $psTheme = $conf->global->PUBLICSTOCK_THEME ?? '';
 $psCss = $conf->global->PUBLICSTOCK_CSS ?? '';
+$psShowImage = (bool)($conf->global->PUBLICSTOCK_SHOW_IMAGE ?? false);
 $psShowDescription = (bool)($conf->global->PUBLICSTOCK_SHOW_DESCRIPTION ?? false);
 $psShowNature = (bool)($conf->global->PUBLICSTOCK_SHOW_NATURE ?? false);
 

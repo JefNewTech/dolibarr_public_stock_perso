@@ -113,6 +113,10 @@ $item->defaultFieldValue = 'Public Stock';
 
 $formSetup->newItem('PUBLICSTOCK_CONTENT')->setAsTitle();
 
+// Show / hide product image
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_IMAGE');
+$item->setAsYesNo();
+
 // Show / hide product description
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_DESCRIPTION');
 $item->setAsYesNo();

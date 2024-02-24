@@ -53,9 +53,7 @@
                 <div class="ps_category" id="tab_<?= $categoryId ?>">
                 <?php
                 foreach ($products as $product) {
-                    if ($product->getImageName() === '') {
-                        $imageBlock = '';
-                    } else {
+                    if ($psShowImage && $product->getImageName() !== '') {
                         $imageURL = (\defined('DOL_MAIN_URL_ROOT') ? (DOL_MAIN_URL_ROOT . '/') : '')
                         . 'document.php?modulepart=product&entity='
                             . $product->getEntityId()
@@ -67,6 +65,8 @@
                         <img class="ps_product_image" alt="Product image" src="{$imageURL}">
 			    	</div>
 HTML;
+                    } else {
+                        $imageBlock = '';
                     }
                     ?>
                     <div class="ps_product">
