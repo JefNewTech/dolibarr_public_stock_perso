@@ -71,9 +71,6 @@ HTML;
                     ?>
                     <div class="ps_product">
                         <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
-                        <p class="ps_product_price">
-                        	<?= $product->getPrice() . ' ' . $psCurrencySymbol ?>
-						</p>
                         <?= $imageBlock ?>
 					<?php if ($psShowDescription) { ?>
                         <p class="ps_product_desc">
@@ -81,10 +78,22 @@ HTML;
                         </p>
 					<?php } ?>
 						<ul>
+						<?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
+                            <li class="ps_product_price">
+								<label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label>
+							    <span><?= $product->getPriceTTC() ?></span>
+							</li>
+						<?php } ?>
+						<?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
+                            <li class="ps_product_price">
+								<label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label>
+							    <span><?= \round($product->getPrice(), 2) ?></span>
+							</li>
+						<?php } ?>
 						<?php if ($psShowStock) { ?>
                             <li class="ps_product_stock">
 								<label><?= $langs->trans('Stock') ?></label>
-							    <span><?= $product->getStock() ?></span>
+							    <span><?= \round($product->getStock(), 2) ?></span>
 							</li>
 						<?php } ?>
 						<?php if ($psShowNature) { ?>

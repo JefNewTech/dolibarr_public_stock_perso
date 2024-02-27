@@ -22,7 +22,7 @@ class ProductDAO extends DAO
         $products = [];
         $stockFilter = $includeOutOfStock ? '' : 'HAVING stock > 0';
         $query = <<<SQL
-        	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc,
+        	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, p.price,
 			SUM(ps.reel) AS stock, n.label AS nature,
             file.entity, file.filename, cp.fk_categorie AS categoryId
             FROM {$this->tablePrefix}product AS p
@@ -60,6 +60,7 @@ SQL;
                 $row['productRef'],
                 $row['label'],
                 $row['description'] ?? '',
+                (float)($row['price'] ?? 0.0),
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
                 $row['filename'] ?? '',

@@ -113,6 +113,16 @@ $item->defaultFieldValue = 'Public Stock';
 
 $formSetup->newItem('PUBLICSTOCK_CONTENT')->setAsTitle();
 
+// Price type (with or without taxes included)
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_PRICE');
+$item->defaultFieldValue = 'included';
+$item->setAsSelect([
+    '' => $langs->trans('No'),
+    'included' => $langs->trans('TTC'),
+    'excluded' => $langs->trans('HT'),
+    'both' => $langs->trans('PUBLICSTOCK_BOTH')
+]);
+
 // Show / hide images
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_IMAGE');
 $item->setAsYesNo();
