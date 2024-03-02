@@ -9,10 +9,30 @@ namespace artifaille\publicstock\model;
  */
 class Product
 {
-	/**
+    /**
       * Fake category ID used for uncategorized products
       */
-	public const UNCATEGORIZED = -1;
+    public const UNCATEGORIZED = -1;
+
+    protected $entityId;
+
+    protected $reference;
+
+    protected $label;
+
+    protected $description;
+
+    protected $price;
+
+    protected $priceTTC;
+
+    protected $stock;
+
+    protected $imageName;
+
+    protected $categoryId;
+
+    protected $nature;
 
     /**
      * Constructor
@@ -29,17 +49,27 @@ class Product
      * @param string $nature Internal label of product nature
      */
     public function __construct(
-        protected int $entityId,
-        protected string $reference,
-        protected string $label,
-        protected string $description,
-        protected float $price,
-        protected float $priceTTC,
-        protected int $stock,
-        protected string $imageName,
-        protected int $categoryId,
-		protected string $nature,
+        int $entityId,
+        string $reference,
+        string $label,
+        string $description,
+        float $price,
+        float $priceTTC,
+        int $stock,
+        string $imageName,
+        int $categoryId,
+        string $nature
     ) {
+        $this->entityId = $entityId;
+        $this->reference = $reference;
+        $this->label = $label;
+        $this->description = $description;
+        $this->price = $price;
+        $this->priceTTC = $priceTTC;
+        $this->stock = $stock;
+        $this->imageName = $imageName;
+        $this->categoryId = $categoryId;
+        $this->nature = $nature;
     }
 
     /**
@@ -132,11 +162,11 @@ class Product
         return $this->categoryId;
     }
 
-	/**
- 	 * Get product nature
- 	 *
- 	 * @return string Internal label of product nature
- 	 */
+    /**
+     * Get product nature
+     *
+     * @return string Internal label of product nature
+     */
     public function getNature(): string
     {
         return $this->nature;
