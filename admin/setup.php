@@ -107,10 +107,6 @@ $formSetup = new FormSetup($db);
 // $item = $formSetup->newItem('NO_PARAM_JUST_TEXT');
 // $item->fieldOverride = (empty($_SERVER['HTTPS']) ? 'http://' : 'https://') . $_SERVER['HTTP_HOST'];
 
-// Page title
-$item = $formSetup->newItem('PUBLICSTOCK_TITLE');
-$item->defaultFieldValue = 'Public Stock';
-
 $formSetup->newItem('PUBLICSTOCK_CONTENT')->setAsTitle();
 
 // Price type (with or without taxes included)
@@ -152,8 +148,7 @@ $item->helpText = $langs->trans('PUBLICSTOCK_THEME_HELP');
 $item->defaultFieldValue = 'none';
 $item->setAsSelect([
     '' => '(' . $langs->trans('None') . ')',
-    'theme1' => 'theme1',
-    'theme2' => 'theme2'
+    'artifaille' => 'Artifaille'
 ]);
 
 // Custom CSS code

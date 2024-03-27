@@ -2,7 +2,7 @@
 <head>
     <?php
     $customCss = ($psTheme === '') ? [] : ['publicstock/css/' . $psTheme . '.css'];
-    \top_htmlhead('', $psTitle, 0, 0, ['publicstock/js/publicstock.js'], $customCss, 1, 1, 1);
+    \top_htmlhead('', '', 0, 0, ['publicstock/js/publicstock.js'], $customCss, 1, 1, 1);
 	if ($psCss !== '') {
 	?>
 	<style rel="stylesheet" type="text/css">
@@ -14,7 +14,6 @@
 </head>
 <body>
     <article class="ps_main">
-        <h1 class="ps_title"><?= $psTitle ?></h1>
         <section>
         <?php
         if (empty($psProducts)) {

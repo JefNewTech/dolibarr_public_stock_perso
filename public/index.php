@@ -58,8 +58,6 @@ if (!$res) {
 global $conf, $db, $langs;
 $langs->loadLangs(['products', 'publicstock@publicstock']);
 
-$psTitle = $conf->global->PUBLICSTOCK_TITLE ?? 'Public stock';
-
 // Make sure Products module is enabled
 if (!\isModEnabled('product')) {
     \httponly_accessforbidden('Products module must be enabled to use this feature.');

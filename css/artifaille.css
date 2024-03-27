@@ -1,0 +1,53 @@
+/* Override jQueryUI styles */
+#ps_categories.ui-widget{
+	margin: 10px;
+}
+
+#ps_categories.ui-widget-content {
+	border: none;
+}
+
+#ps_categories .ui-widget-header {
+	background-color: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+}
+
+#ps_categories .ui-tabs-panel {
+	border: 1px solid rgba(0,0,0,.3);
+	border-top: none;
+	border-radius: 3px;
+}
+
+#ps_categories .ui-state-active {
+	background-color: rgba(176, 15, 7, 0.7);
+	border-color: rgba(176, 15, 7, 0.7);
+}
+
+#ps_categories .ui-tabs-tab {
+	margin-right: 5px;
+}
+
+/* Other styles */
+.ps_products_list {
+	padding: 1rem;
+}
+
+.ps_product {
+	width: 20rem;
+	padding: 1rem;
+	border: 1px solid #ccc;
+	border-radius: 0.5rem;
+	box-shadow: 0.3rem 0.3rem 8px rgba(0, 0, 0, 0.2);
+}
+
+.ps_product_image {
+	width: 10rem;
+	height: 10rem;
+	margin: 1rem 0;
+	box-shadow: 0.1rem 0.1rem 8px rgba(0, 0, 0, 0.2);
+	border: 1px solid #ccc;
+	border-radius: 0.2rem;
+	padding: 0.2rem;
+}
