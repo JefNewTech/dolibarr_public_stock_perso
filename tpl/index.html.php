@@ -66,35 +66,37 @@ HTML;
                     ?>
                     <div class="ps_product">
                         <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
-                        <?= $imageBlock ?>
-					<?php if ($psShowDescription) { ?>
-                        <p class="ps_product_desc">
-    						<?= $product->getDescription() ?>
-                        </p>
+						<div class="ps_product_image_desc">
+                        	<?= $imageBlock ?>
+						<?php if ($psShowDescription) { ?>
+                        	<p class="ps_product_desc">
+    							<?= $product->getDescription() ?>
+                        	</p>
+						</div>
 					<?php } ?>
 						<ul>
 						<?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
                             <li class="ps_product_price">
-								<label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label>
-							    <span><?= $product->getPriceTTC() ?></span>
+								<label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label
+								><span><?= $product->getPriceTTC() ?></span>
 							</li>
 						<?php } ?>
 						<?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
                             <li class="ps_product_price">
-								<label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label>
-							    <span><?= \round($product->getPrice(), 2) ?></span>
+								<label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label
+								><span><?= \round($product->getPrice(), 2) ?></span>
 							</li>
 						<?php } ?>
 						<?php if ($psShowStock) { ?>
                             <li class="ps_product_stock">
-								<label><?= $langs->trans('Stock') ?></label>
-							    <span><?= \round($product->getStock(), 2) ?></span>
+								<label><?= $langs->trans('Stock') ?></label
+								><span><?= \round($product->getStock(), 2) ?></span>
 							</li>
 						<?php } ?>
 						<?php if ($psShowNature) { ?>
                             <li class="ps_product_finished">
-								<label><?= $langs->trans('NatureOfProductShort') ?></label>
-							    <span><?= $langs->trans($product->getNature()) ?></span>
+								<label><?= $langs->trans('NatureOfProductShort') ?></label
+								><span><?= $langs->trans($product->getNature()) ?></span>
 							</li>
 						<?php } ?>
 						</ul>

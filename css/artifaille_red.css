@@ -1,0 +1,5 @@
+@import "./artifaille.css";
+
+:root {
+	--main-color: rgba(176, 15, 7, 0.7);
+}

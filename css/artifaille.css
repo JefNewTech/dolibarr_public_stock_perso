@@ -1,5 +1,5 @@
 /* Override jQueryUI styles */
-#ps_categories.ui-widget{
+#ps_categories.ui-widget {
 	margin: 10px;
 }
 
@@ -9,45 +9,106 @@
 
 #ps_categories .ui-widget-header {
 	background-color: transparent;
-	border-top: none;
-	border-left: none;
-	border-right: none;
+	border: none;
 }
 
 #ps_categories .ui-tabs-panel {
-	border: 1px solid rgba(0,0,0,.3);
-	border-top: none;
-	border-radius: 3px;
+	border: 1px solid #ccc;
+	border-radius: 0.2rem;
 }
 
 #ps_categories .ui-state-active {
-	background-color: rgba(176, 15, 7, 0.7);
-	border-color: rgba(176, 15, 7, 0.7);
+	background-color: var(--main-color);
+	border-color: var(--main-color);
 }
 
 #ps_categories .ui-tabs-tab {
-	margin-right: 5px;
+	margin-right: 0.5rem;
 }
 
 /* Other styles */
+#ps_categories .ps_category {
+	display: flex;
+	flex-wrap: wrap;
+}
+
 .ps_products_list {
 	padding: 1rem;
 }
 
 .ps_product {
-	width: 20rem;
+	width: 30rem;
+	min-width: 30rem;
 	padding: 1rem;
 	border: 1px solid #ccc;
-	border-radius: 0.5rem;
-	box-shadow: 0.3rem 0.3rem 8px rgba(0, 0, 0, 0.2);
+	border-radius: 0.2rem;
+	box-shadow: 0.3rem 0.3rem 0.4rem rgba(0, 0, 0, 0.2);
+	margin-right: 1rem;
+	margin-bottom: 1rem;
+}
+
+.ps_product_label {
+	margin: 0;
+	color: var(--main-color);
+}
+
+.ps_product_image_desc {
+	display: flex;
+	align-items: start;
+	justify-content: start;
 }
 
 .ps_product_image {
 	width: 10rem;
 	height: 10rem;
 	margin: 1rem 0;
-	box-shadow: 0.1rem 0.1rem 8px rgba(0, 0, 0, 0.2);
+	box-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 	border: 1px solid #ccc;
 	border-radius: 0.2rem;
 	padding: 0.2rem;
+}
+
+.ps_product_desc {
+	margin-left: 0.4rem;
+	padding: 0.5rem;
+	height: 10rem;
+	text-align: justify;
+	text-overflow: ellipsis;
+	overflow: auto;
+}
+
+.ps_product ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.ps_product li {
+	margin: 0;
+	height: 2rem;
+	line-height: 2rem;
+	display: flex;
+	align-items: center;
+	justify-content: start;
+}
+
+.ps_product ul label {
+	width: 9rem;
+	height: 2rem;
+	padding-left: 0.5rem;
+    background-color: var(--main-color);
+    color: white;
+}
+
+.ps_product li span::before {
+	content: '';
+	display: inline-block;
+    width: 0;
+    height: 0;
+    border: 1rem solid transparent;
+    border-left: 1rem solid var(--main-color);
+}
+
+.ps_product li span {
+	height: 2rem;
+	display: flex;
 }

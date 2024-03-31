@@ -145,10 +145,13 @@ $formSetup->newItem('PUBLICSTOCK_APPEARANCE')->setAsTitle();
 // CSS theme
 $item = $formSetup->newItem('PUBLICSTOCK_THEME');
 $item->helpText = $langs->trans('PUBLICSTOCK_THEME_HELP');
-$item->defaultFieldValue = 'none';
+$item->defaultFieldValue = 'artifaille_red';
 $item->setAsSelect([
     '' => '(' . $langs->trans('None') . ')',
-    'artifaille' => 'Artifaille'
+    'artifaille_red' => 'Artifaille Red',
+    'artifaille_blue' => 'Artifaille Blue',
+    'artifaille_green' => 'Artifaille Green',
+    'artifaille_gray' => 'Artifaille Gray',
 ]);
 
 // Custom CSS code
