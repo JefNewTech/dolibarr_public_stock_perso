@@ -14,8 +14,6 @@ class Product
       */
     public const UNCATEGORIZED = -1;
 
-    protected $entityId;
-
     protected $reference;
 
     protected $label;
@@ -28,7 +26,7 @@ class Product
 
     protected $stock;
 
-    protected $imageName;
+    protected $imageShare;
 
     protected $categoryId;
 
@@ -44,42 +42,30 @@ class Product
      * @param float $price Product selling price (taxes excluded)
      * @param float $priceTTC Product selling price (taxes included)
      * @param int $stock Number of products left in stock
-     * @param string $imageName Name of image file
+     * @param string $imageShare Hash of public image share
      * @param int $categoryId ID of product category
      * @param string $nature Internal label of product nature
      */
     public function __construct(
-        int $entityId,
         string $reference,
         string $label,
         string $description,
         float $price,
         float $priceTTC,
         int $stock,
-        string $imageName,
+        string $imageShare,
         int $categoryId,
         string $nature
     ) {
-        $this->entityId = $entityId;
         $this->reference = $reference;
         $this->label = $label;
         $this->description = $description;
         $this->price = $price;
         $this->priceTTC = $priceTTC;
         $this->stock = $stock;
-        $this->imageName = $imageName;
+        $this->imageShare = $imageShare;
         $this->categoryId = $categoryId;
         $this->nature = $nature;
-    }
-
-    /**
-     * Get ID of product entity
-     *
-     * @return int
-     */
-    public function getEntityId(): int
-    {
-        return $this->entityId;
     }
 
     /**
@@ -143,13 +129,13 @@ class Product
     }
 
     /**
-     * Get name of image file.
+     * Get hash of image public share.
      *
      * @return string
      */
-    public function getImageName(): string
+    public function getImageShare(): string
     {
-        return $this->imageName;
+        return $this->imageShare;
     }
 
     /**

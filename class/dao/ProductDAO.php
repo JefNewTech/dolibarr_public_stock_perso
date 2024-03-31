@@ -24,7 +24,7 @@ class ProductDAO extends DAO
         $query = <<<SQL
         	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, p.price,
 			SUM(ps.reel) AS stock, n.label AS nature,
-            file.entity, file.filename, cp.fk_categorie AS categoryId
+            file.share, cp.fk_categorie AS categoryId
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
@@ -56,14 +56,13 @@ SQL;
             $rowid = (int)$row['rowid'];
             $categoryId = (int)($row['categoryId'] ?? -1);
             $products[$categoryId][$rowid] = new Product(
-                (int)$row['entity'],
                 $row['productRef'],
                 $row['label'],
                 $row['description'] ?? '',
                 (float)($row['price'] ?? 0.0),
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
-                $row['filename'] ?? '',
+                $row['share'] ?? '',
 				(int)($row['categoryId'] ?? Product::UNCATEGORIZED),
 				$row['nature'] ?? ''
             );

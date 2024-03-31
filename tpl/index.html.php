@@ -52,13 +52,9 @@
                 <div class="ps_category" id="tab_<?= $categoryId ?>">
                 <?php
                 foreach ($products as $product) {
-                    if ($psShowImage && $product->getImageName() !== '') {
+                    if ($psShowImage && $product->getImageShare() !== '') {
                         $imageURL = (\defined('DOL_MAIN_URL_ROOT') ? (DOL_MAIN_URL_ROOT . '/') : '')
-                        . 'document.php?modulepart=product&entity='
-                            . $product->getEntityId()
-                            . '&attachment=0&file='
-                            . $product->getReference() . '/'
-                            . $product->getImageName();
+                        	. 'document.php?hashp=' . $product->getImageShare();
                         $imageBlock = <<<HTML
                     <div class="ps_product_image_block">
                         <img class="ps_product_image" alt="Product image" src="{$imageURL}">
