@@ -38,7 +38,7 @@ Again, we invite you if you wish to submit a pull request to benefit the communi
 
 ### Features / Bug fixes
 
-This plugin was mainly designed to meet the needs of the French association [Artifaille] (https://artifaille.fr/). Its features may not be sufficient for other organizations with other needs. Feel free to create [an issue](https://docs.codeberg.org/getting-started/issue-tracking-basics/) to report a bug or suggest a feature.
+This plugin was mainly designed to meet the needs of the French association [Artifaille](https://artifaille.fr/). Its features may not be sufficient for other organizations with other needs. Feel free to create [an issue](https://docs.codeberg.org/getting-started/issue-tracking-basics/) to report a bug or suggest a feature.
 
 ## Licenses
 
