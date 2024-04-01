@@ -1,8 +1,54 @@
 # PublicStock plugin for [Dolibarr ERP CRM](https://www.dolibarr.org)
 
+*Pour la version française de ce README, voir plus bas.*
+
 ## English
 
-*Coming soon...*
+### Features
+
+This plugin allows you to set up a store front in which to display publicly the products in your Dolibarr. It is **not** an e-commerce plugin. It is mainly intended for organizations with a physical point of sale, simply wishing to make the content of their stock public.
+
+It creates a public page (no Dolibarr authentication required) that you can use as is or most likely include in your website.
+
+In detail, the plugin allows you to:
+- Classify products according to their category (one tab per category)
+- Choose the data you want to display on each product (in particular if prices are displayed VAT or taxes excluded)
+- Choose whether or not to display products not available for sale
+- Choose whether or not to display products out of stock
+- Use one of the visual themes delivered with the plugin
+- Customize this theme or create yours (you need to know the [CSS](https://developer.mozilla.org/en/docs/Web/CSS) language)
+
+### Contributing
+
+The project is hosted on [Codeberg](https://codeberg.org/halibut/dolibarr_public_stock).
+
+#### Translations
+
+The plugin is currently available in English and French.
+
+To translate it into another language, you can add a subfolder in "langs" with the [language code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) and the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements). For example `es_AR` for Spanish from Argentina. Then copy the "publicstock.lang" file from the "fr_FR" or "en_US" folder and replace the translations with your own.
+
+If you wish, you can then submit this translation in a [pull request](https://docs.codeberg.org/collaborating/pull-requests-and-git-flow/]) to benefit the community.
+
+#### Themes
+
+To create a new theme, add a {themeName}.css file in the **css** directory with your styles. To make it available in the plugin configuration screen, you must then modify the **admin/setup.php** file and add the display and file names of your theme in the definition of the `PUBLICSTOCK_THEME` field.
+
+Again, we invite you if you wish to submit a pull request to benefit the community.
+
+### Features / Bug fixes
+
+This plugin was mainly designed to meet the needs of the French association [Artifaille] (https://artifaille.fr/). Its features may not be sufficient for other organizations with other needs. Feel free to create [an issue](https://docs.codeberg.org/getting-started/issue-tracking-basics/) to report a bug or suggest a feature.
+
+## Licenses
+
+### Source code
+
+The source code is under GPL v3. See the **COPYING** file for more information.
+
+### Documentation
+
+Documentation is licensed under [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html)
 
 ## Français
 
@@ -11,10 +57,6 @@
 Ce module permet de mettre en place une vitrine dans laquelle rendre visibles publiquement les produits figurant dans votre Dolibarr. Ce n'est **pas** un module d'e-commerce. Il est principalement destiné à des organisations avec un point de vente physique, souhaitant simplement rendre le contenu de leur stock public.
 
 Il crée une page publique (pas d'authentification à Dolibarr nécessaire) que vous pouvez utiliser telle quelle ou plus probablement inclure dans votre site web.
-
-<!--
-![Screenshot publicstock](img/screenshot_publicstock.png?raw=true "PublicStock"){imgmd}
--->
 
 Dans le détail, le module permet de :
 - Classer les produits en fonction de leur catégorie (un onglet par catégorie)
@@ -40,19 +82,19 @@ Si vous le souhaitez, vous pouvez ensuite soumettre cette traduction dans une [p
 
 #### Thèmes
 
-Pour créer un nouveau thème, ajouter un fichier {nomTheme}.css dans le répertoire CSS avec vos styles. Pour le rendre disponible dans l'écran de configuration du module, il faut ensuite modifier le fichier **admin/setup.php** et ajouter le nom d'affichage et le nom du fichier CSS de votre thème dans la définition du champ `PUBLICSTOCK_THEME`.
+Pour créer un nouveau thème, ajouter un fichier {nomTheme}.css dans le répertoire **css** avec vos styles. Pour le rendre disponible dans l'écran de configuration du module, il faut ensuite modifier le fichier **admin/setup.php** et ajouter le nom d'affichage et le nom du fichier CSS de votre thème dans la définition du champ `PUBLICSTOCK_THEME`.
 
 Là aussi, nous vous invitons si vous le souhaitez à soumettre une pull request pour en faire profiter la communauté.
 
 #### Fonctionnalités / Corrections de bugs
 
-Ce module a été principalement conçu pour répondre aux besoins de l'association française [Artifaille](https://artifaille.fr/). Ses fonctionnalités ne seront pas forcément suffisantes pour d'autres organisations avec d'autres besoins. N'hésitez pas à créer [un ticket](https://docs.codeberg.org/getting-started/issue-tracking-basics/) pour signaler un bug ou proposer une évolution.
+Ce module a été principalement conçu pour répondre aux besoins de l'association française [Artifaille](https://artifaille.fr/). Ses fonctionnalités ne seront pas forcément suffisantes pour d'autres organisations avec d'autres besoins. N'hésitez pas à créer [un ticket](https://docs.codeberg.org/getting-started/issue-tracking-basics/) pour signaler un bug ou proposer une fonctionnalité.
 
 ### Licences
 
 #### Code source
 
-Le code source est sous licence GPL v3. Voir le fichier COPYING (en anglais) pour plus d'information.
+Le code source est sous licence GPL v3. Voir le fichier **COPYING** (en anglais) pour plus d'information.
 
 #### Documentation
 
