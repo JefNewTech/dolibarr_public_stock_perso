@@ -1,86 +1,63 @@
-# PUBLICSTOCK FOR [DOLIBARR ERP CRM](https://www.dolibarr.org)
+# PublicStock plugin for [Dolibarr ERP CRM](https://www.dolibarr.org)
 
-## Features
+## English
 
-Description of the module...
+*Coming soon...*
+
+## Français
+
+### Fonctionnalités
+
+Ce plugin permet de mettre en place une vitrine dans laquelle rendre visibles publiquement les produits figurant dans votre Dolibarr. Ce n'est **pas** un plugin d'e-commerce. Il est principalement destiné à des organisations avec un point de vente physique, souhaitant simplement rendre le contenu de leur stock public.
+
+Il crée une page publique (pas d'authentification à Dolibarr nécessaire) que vous pouvez utiliser telle quelle ou plus probablement inclure dans votre site web.
 
 <!--
 ![Screenshot publicstock](img/screenshot_publicstock.png?raw=true "PublicStock"){imgmd}
 -->
 
-Other external modules are available on [Dolistore.com](https://www.dolistore.com).
+Dans le détail, le plugin permet de :
+- Classer les produits en fonction de leur catégorie (un onglet par catégorie)
+- Choisir les données que vous souhaitez afficher sur chaque produit (en particulier si les prix sont affichés TTC ou hors taxe)
+- Choisir d'afficher ou non les produits non disponibles à la vente
+- Choisir d'afficher ou non les produits en rupture de stock
+- Utiliser un des thèmes visuels livrés avec le plugin
+- Personnaliser ce thème ou créer le vôtre (nécessite de connaître le langage [CSS](https://developer.mozilla.org/fr/docs/Web/CSS))
 
-## Translations
+### Contribuer
 
-Translations can be completed manually by editing files into directories *langs*.
+Le projet est hébergé sur [Codeberg](https://codeberg.org/halibut/dolibarr_public_stock).
 
-<!--
-This module contains also a sample configuration for Transifex, under the hidden directory [.tx](.tx), so it is possible to manage translation using this service.
+#### Traductions
 
-For more informations, see the [translator's documentation](https://wiki.dolibarr.org/index.php/Translator_documentation).
+Le plugin est actuellement disponible en français et en anglais.
 
-There is a [Transifex project](https://transifex.com/projects/p/dolibarr-module-template) for this module.
--->
+Pour le traduire dans une autre langue, vous pouvez ajouter un sous-dossier dans "langs" avec le [code de la langue](https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1) et le [code du pays](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements). Par exemple `es_AR` pour l'espagnol d'Argentine. Copiez-y ensuite le fichier "publicstock.lang" du dossier "fr_FR" ou "en_US" et remplacez les traductions par les vôtres.
 
-<!--
+Si vous le souhaitez, vous pouvez ensuite soumettre cette traduction dans une [pull request](https://docs.codeberg.org/collaborating/pull-requests-and-git-flow/]) pour en faire profiter la communauté.
 
-## Installation
+#### Thèmes
 
-### From the ZIP file and GUI interface
+Pour créer un nouveau thème, ajouter un fichier {nomTheme}.css dans le répertoire CSS avec vos styles. Pour le rendre disponible dans l'écran de configuration du plugin, il faut ensuite modifier le fichier **admin/setup.php** et ajouter le nom d'affichage et le nom du fichier CSS de votre thème dans la définition du champ `PUBLICSTOCK_THEME`.
 
-If the module is a ready to deploy zip file, so with a name module_xxx-version.zip (like when downloading it from a market place like [Dolistore](https://www.dolistore.com)),
-go into menu ```Home - Setup - Modules - Deploy external module``` and upload the zip file.
+Là aussi, nous vous invitons si vous le souhaitez à soumettre une pull request pour en faire profiter la communauté.
 
-Note: If this screen tell you that there is no "custom" directory, check that your setup is correct:
+#### Fonctionnalités / Corrections de bugs
 
-- In your Dolibarr installation directory, edit the ```htdocs/conf/conf.php``` file and check that following lines are not commented:
+Ce plugin a été principalement conçu pour répondre aux besoins de l'association française [Artifaille](https://artifaille.fr/). Certaines fonctionnalités n'ont pas été développées pour le moment, mais pourraient l'être dans le futur si des utilisateurs du plugin nous en font la demande. Par exemple :
+- Gérer le fait qu'un produit puisse appartenir à plusieurs catégories
+- Gérer l'arborescence de catégories
+- Afficher d'autres données des fiches produits
 
-    ```php
-    //$dolibarr_main_url_root_alt ...
-    //$dolibarr_main_document_root_alt ...
-    ```
+N'hésitez pas à créer [un ticket](https://docs.codeberg.org/getting-started/issue-tracking-basics/) pour signaler un bug ou proposer une évolution
 
-- Uncomment them if necessary (delete the leading ```//```) and assign a sensible value according to your Dolibarr installation
 
-    For example :
+### Licences
 
-    - UNIX:
-        ```php
-        $dolibarr_main_url_root_alt = '/custom';
-        $dolibarr_main_document_root_alt = '/var/www/Dolibarr/htdocs/custom';
-        ```
+#### Code source
 
-    - Windows:
-        ```php
-        $dolibarr_main_url_root_alt = '/custom';
-        $dolibarr_main_document_root_alt = 'C:/My Web Sites/Dolibarr/htdocs/custom';
-        ```
-
-### From a GIT repository
-
-Clone the repository in ```$dolibarr_main_document_root_alt/publicstock```
-
-```sh
-cd ....../custom
-git clone git@github.com:gitlogin/publicstock.git publicstock
-```
-
-### <a name="final_steps"></a>Final steps
-
-From your browser:
-
-  - Log into Dolibarr as a super-administrator
-  - Go to "Setup" -> "Modules"
-  - You should now be able to find and enable the module
-
--->
-
-## Licenses
-
-### Main code
-
-GPLv3 or (at your option) any later version. See file COPYING for more information.
+Le code source est sous licence GPL v3. Voir le fichier COPYING (en anglais) pour plus d'information.
 
 ### Documentation
 
-All texts and readmes are licensed under GFDL.
+La documentation est sous licence [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html)
