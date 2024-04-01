@@ -58,6 +58,6 @@ N'hésitez pas à créer [un ticket](https://docs.codeberg.org/getting-started/i
 
 Le code source est sous licence GPL v3. Voir le fichier COPYING (en anglais) pour plus d'information.
 
-### Documentation
+#### Documentation
 
 La documentation est sous licence [GFDL v1.3](https://www.gnu.org/licenses/fdl-1.3.en.html)
