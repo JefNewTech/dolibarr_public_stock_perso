@@ -13,7 +13,6 @@ It creates a public page (no Dolibarr authentication required) that you can use 
 In detail, the plugin allows you to:
 - Classify products according to their category (one tab per category)
 - Choose the data you want to display on each product (in particular if prices are displayed VAT or taxes excluded)
-- Choose whether or not to display products not available for sale
 - Choose whether or not to display products out of stock
 - Use one of the visual themes delivered with the plugin
 - Customize this theme or create yours (you need to know the [CSS](https://developer.mozilla.org/en/docs/Web/CSS) language)
@@ -61,7 +60,6 @@ Il crée une page publique (pas d'authentification à Dolibarr nécessaire) que 
 Dans le détail, le module permet de :
 - Classer les produits en fonction de leur catégorie (un onglet par catégorie)
 - Choisir les données que vous souhaitez afficher sur chaque produit (en particulier si les prix sont affichés TTC ou hors taxe)
-- Choisir d'afficher ou non les produits non disponibles à la vente
 - Choisir d'afficher ou non les produits en rupture de stock
 - Utiliser un des thèmes visuels livrés avec le module
 - Personnaliser ce thème ou créer le vôtre (nécessite de connaître le langage [CSS](https://developer.mozilla.org/fr/docs/Web/CSS))
