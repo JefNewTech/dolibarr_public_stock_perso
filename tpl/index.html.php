@@ -66,14 +66,16 @@ HTML;
                     ?>
                     <div class="ps_product">
                         <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
-						<div class="ps_product_image_desc">
-                        	<?= $imageBlock ?>
-						<?php if ($psShowDescription) { ?>
-                        	<p class="ps_product_desc">
-    							<?= $product->getDescription() ?>
-                        	</p>
-						</div>
-					<?php } ?>
+						<?php if ($psShowDescription || $psShowImage) { ?>
+							<div class="ps_product_image_desc">
+                        		<?= $imageBlock ?>
+							<?php if ($psShowDescription) { ?>
+                        		<p class="ps_product_desc">
+    								<?= $product->getDescription() ?>
+                        		</p>
+							<?php } ?>
+							</div>
+						<?php } ?>
 						<ul>
 						<?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
                             <li class="ps_product_price">
