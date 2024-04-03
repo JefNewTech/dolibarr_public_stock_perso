@@ -38,7 +38,6 @@
 
 .ps_product {
 	width: 30rem;
-	min-width: 30rem;
 	padding: 1rem;
 	border: 1px solid #ccc;
 	border-radius: 0.2rem;
@@ -77,6 +76,7 @@
 	text-align: justify;
 	text-overflow: ellipsis;
 	overflow: auto;
+	width: 100%;
 }
 
 .ps_product ul {
@@ -99,6 +99,9 @@
 	padding-left: 0.5rem;
     background-color: var(--main-color);
     color: white;
+    white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .ps_product li span::before {
@@ -113,4 +116,32 @@
 .ps_product li span {
 	height: 2rem;
 	display: flex;
+	white-space: nowrap;
+}
+
+/* Responsive design */
+@media screen and (max-width: 33rem) {
+	.ps_product_image {
+		width: 6rem;
+		height: 6rem;
+	}
+
+	.ps_product_desc {
+		height: 6rem;
+	}
+
+	.ps_product_image_desc {
+		height: 6rem;
+	}
+
+	.ps_product li span::before {
+		border: 0;
+	}
+
+	.ps_product ul span {
+		margin-left: 0.5rem;
+	}
+	.ps_product ul label {
+		width: 6rem;
+	}
 }
