@@ -80,7 +80,7 @@ HTML;
 						<?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
                             <li class="ps_product_price">
 								<label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label
-								><span><?= $product->getPriceTTC() ?></span>
+								><span><?= $product->getPriceTTC() . $psCurrencySymbol ?></span>
 							</li>
 						<?php } ?>
 						<?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
