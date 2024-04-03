@@ -17,6 +17,17 @@ In detail, the plugin allows you to:
 - Use one of the visual themes delivered with the plugin
 - Customize this theme or create yours (you need to know the [CSS](https://developer.mozilla.org/en/docs/Web/CSS) language)
 
+### Installation
+
+- Download the .zip archive
+- In Dolibarr, go to Home > Setup > Modules/Applications > Deploy/install external app/module
+- Upload the .zip archive and submit
+
+### Setup
+
+- In Dolibarr, go to Home > Setup > Modules/Applications
+- Find "PUBLIC STOCK" and click the gear icon
+
 ### Contributing
 
 The project is hosted on [Codeberg](https://codeberg.org/halibut/dolibarr_public_stock).
@@ -65,6 +76,17 @@ Dans le détail, le module permet de :
 - Personnaliser ce thème ou créer le vôtre (nécessite de connaître le langage [CSS](https://developer.mozilla.org/fr/docs/Web/CSS))
 
 La page d'administration du module permet de paramétrer toutes ces options et vous fournit également l'adresse de la page publique crée.
+
+### Installation
+
+- Télécharger l'archive .zip
+- Dans Dolibarr, aller dans Accueil > Configuration > Modules/Applications > Deployer/Installer un module externe
+- Déposer l'archive .zip et valider
+
+### Configuration
+
+- Dans Dolibarr, aller dans Accueil > Configuration > Modules/Applications
+- Trouver "PUBLIC STOCK" et cliquer sur l'icône en forme d'engrenage
 
 ### Contribuer
 
