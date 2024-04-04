@@ -104,8 +104,6 @@ Le projet est hébergé sur [Codeberg](https://codeberg.org/halibut/dolibarr_pub
 
 #### Traductions
 
-Le module est actuellement disponible en français et en anglais.
-
 Pour le traduire dans une autre langue, vous pouvez ajouter un sous-dossier dans "langs" avec le [code de la langue](https://fr.wikipedia.org/wiki/Liste_des_codes_ISO_639-1) et le [code du pays](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements). Par exemple `es_AR` pour l'espagnol d'Argentine. Copiez-y ensuite le fichier "publicstock.lang" du dossier "fr_FR" ou "en_US" et remplacez les traductions par les vôtres.
 
 Si vous le souhaitez, vous pouvez ensuite soumettre cette traduction dans une [pull request](https://docs.codeberg.org/collaborating/pull-requests-and-git-flow/]) pour en faire profiter la communauté.
