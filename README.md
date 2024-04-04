@@ -17,6 +17,13 @@ In detail, the plugin allows you to:
 - Use one of the visual themes delivered with the plugin
 - Customize this theme or create yours (you need to know the [CSS](https://developer.mozilla.org/en/docs/Web/CSS) language)
 
+The module administration page allows you to set up all these options and also provides a link to the public page created.
+
+This plugin is available in the following languages :
+- Dutch
+- English
+- French
+
 ### Installation
 
 - Download the .zip archive
@@ -33,8 +40,6 @@ In detail, the plugin allows you to:
 The project is hosted on [Codeberg](https://codeberg.org/halibut/dolibarr_public_stock).
 
 #### Translations
-
-The plugin is currently available in English and French.
 
 To translate it into another language, you can add a subfolder in "langs" with the [language code](https://en.wikipedia.org/wiki/List_of_ISO_639_language_codes) and the [country code](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2#Officially_assigned_code_elements). For example `es_AR` for Spanish from Argentina. Then copy the "publicstock.lang" file from the "fr_FR" or "en_US" folder and replace the translations with your own.
 
@@ -77,6 +82,11 @@ Dans le détail, le module permet de :
 
 La page d'administration du module permet de paramétrer toutes ces options et vous fournit également l'adresse de la page publique crée.
 
+Ce module est disponible dans les langues suivantes :
+- Anglais
+- Français
+- Néerlandais
+ 
 ### Installation
 
 - Télécharger l'archive .zip

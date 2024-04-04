@@ -1,0 +1,29 @@
+#
+# Generic
+#
+ModulePublicStockName = Openbare voorraad
+ModulePublicStockDesc = Maak een openbare pagina met producten die u wilt verkopen
+Uncategorized = Niet gecategoriseerd
+NoProductToDisplay = Geen producten om weer te geven
+
+#
+# Admin page
+#
+PublicStockSetup = Instellingen voor openbare aandelen
+Settings = Instellingen
+PublicStockSetupPage = Definieer de inhoud en het uiterlijk van uw openbare productpagina,
+PublicStockTry = test het dan
+PUBLICSTOCK_TITLE = Pagina titel
+PUBLICSTOCK_SHOW_OUT_OF_STOCK = Toon producten die momenteel niet op voorraad zijn
+PUBLICSTOCK_SHOW_PRICE = Prijzen weergeven
+PUBLICSTOCK_BOTH = Beide
+PUBLICSTOCK_SHOW_IMAGE = Toon afbeeldingen
+PUBLICSTOCK_SHOW_DESCRIPTION = Beschrijvingen weergeven
+PUBLICSTOCK_SHOW_STOCK = Toon aandelen
+PUBLICSTOCK_SHOW_NATURE = Producttypes weergeven
+PUBLICSTOCK_THEME = Thema
+PUBLICSTOCK_THEME_HELP = Kies een thema, dat u kunt aanpassen door hieronder CSS-code toe te voegen, of selecteer "Geen" om volledig uw eigen thema te maken
+PUBLICSTOCK_CSS = Aangepaste CSS-code
+PUBLICSTOCK_CSS_HELP = Voeg uw eigen CSS-code toe om uw thema aan te passen of te maken
+PUBLICSTOCK_CONTENT = Pagina inhoud
+PUBLICSTOCK_APPEARANCE = Pagina-uiterlijk
