@@ -1,5 +1,7 @@
 # PublicStock plugin for [Dolibarr ERP CRM](https://www.dolibarr.org)
 
+![](./screenshot.png)
+
 *Pour la version française de ce README, voir plus bas.*
 
 ## English
