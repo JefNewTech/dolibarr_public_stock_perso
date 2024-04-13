@@ -1,17 +1,12 @@
-<!doctype html>
-<head>
-    <?php
+<?php
     $customCss = ($psTheme === '') ? [] : ['publicstock/css/' . $psTheme . '.css'];
-    \top_htmlhead('', '', 0, 0, ['publicstock/js/publicstock.js'], $customCss, 1, 1, 1);
+	\top_htmlhead('', '', 0, 0, ['publicstock/js/publicstock.js'], $customCss, 1, 1, 1);
 	if ($psCss !== '') {
 	?>
-	<style rel="stylesheet" type="text/css">
-	<?= $psCss ?>
-	</style>
+		<style rel="stylesheet" type="text/css"><?= $psCss ?></style>
 	<?php
 	}
-	?>
-</head>
+?>
 <body>
     <article class="ps_main">
         <section>
