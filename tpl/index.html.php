@@ -65,13 +65,13 @@ HTML;
 							<div class="ps_product_image_desc">
                         		<?= $imageBlock ?>
 							<?php if ($psShowDescription) { ?>
-                        		<p class="ps_product_desc">
+                        		<div class="ps_product_desc">
     								<?= $product->getDescription() ?>
-                        		</p>
+                        		</div>
 							<?php } ?>
 							</div>
 						<?php } ?>
-						<ul>
+						<ul class="ps_product_other">
 						<?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
                             <li class="ps_product_price">
 								<label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label

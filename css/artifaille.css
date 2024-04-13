@@ -79,12 +79,12 @@
 	width: 100%;
 }
 
-.ps_product ul {
+.ps_product_other {
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
-.ps_product li {
+.ps_product_other li {
 	margin: 0;
 	height: 2rem;
 	line-height: 2rem;
@@ -93,7 +93,7 @@
 	justify-content: start;
 }
 
-.ps_product ul label {
+.ps_product_other label {
 	width: 9rem;
 	height: 2rem;
 	padding-left: 0.5rem;
@@ -104,7 +104,7 @@
 	text-overflow: ellipsis;
 }
 
-.ps_product li span::before {
+.ps_product_other li span::before {
 	content: '';
 	display: inline-block;
     width: 0;
@@ -113,7 +113,7 @@
     border-left: 1rem solid var(--main-color);
 }
 
-.ps_product li span {
+.ps_product_other li span {
 	height: 2rem;
 	display: flex;
 	white-space: nowrap;
