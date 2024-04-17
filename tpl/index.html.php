@@ -61,6 +61,7 @@ HTML;
                     ?>
                     <div class="ps_product">
                         <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
+						<p class="ps_product_ref"><?= '(' . $product->getReference() . ')' ?></p>
 						<?php if ($psShowDescription || $psShowImage) { ?>
 							<div class="ps_product_image_desc">
                         		<?= $imageBlock ?>

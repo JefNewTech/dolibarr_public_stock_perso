@@ -51,6 +51,13 @@
 	color: var(--main-color);
 }
 
+.ps_product_ref {
+	margin: 0;
+	font-style: italic;
+	color: #999;
+	font-size: 0.7rem;
+}
+
 .ps_product_image_desc {
 	display: flex;
 	align-items: start;
