@@ -37,6 +37,7 @@ PUBLICSTOCK_SHOW_DESCRIPTION = Show descriptions
 PUBLICSTOCK_SHOW_STOCK = Show stocks
 PUBLICSTOCK_SHOW_NATURE = Show products natures
 PUBLICSTOCK_SHOW_UNCATEGORIZED = Show uncategorized products
+PUBLICSTOCK_SHOW_WITHOUT_IMAGE = Show products without image
 PUBLICSTOCK_THEME = Theme
 PUBLICSTOCK_THEME_HELP = Pick a theme that you may customize by adding CSS code below or select "None" to build your own theme from scratch.
 PUBLICSTOCK_CSS = Custom CSS code

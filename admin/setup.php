@@ -139,12 +139,15 @@ $item->setAsYesNo();
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_OUT_OF_STOCK');
 $item->setAsYesNo();
 
-// Show / hide out of stock products
+// Show / hide uncategorized products
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_UNCATEGORIZED');
 $item->setAsYesNo();
 
-$formSetup->newItem('PUBLICSTOCK_APPEARANCE')->setAsTitle();
+// Show / hide products without image
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_WITHOUT_IMAGE');
+$item->setAsYesNo();
 
+$formSetup->newItem('PUBLICSTOCK_APPEARANCE')->setAsTitle();
 
 // CSS theme
 $item = $formSetup->newItem('PUBLICSTOCK_THEME');

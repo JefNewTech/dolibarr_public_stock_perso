@@ -13,7 +13,8 @@ This plugin allows you to set up a store front in which to display publicly the 
 It creates a public page (no Dolibarr authentication required) that you can use as is or most likely include in your website.
 
 In detail, the plugin allows you to:
-- Classify products according to their category (one tab per category)
+- Display products images (requires a public share link to the image)
+- Classify products according to their category (one tab per category), decide if you want to show uncategorized products
 - Choose the data you want to display on each product (in particular if prices are displayed VAT or taxes excluded)
 - Choose whether or not to display products out of stock
 - Use one of the visual themes delivered with the plugin
@@ -76,7 +77,8 @@ Ce module permet de mettre en place une vitrine dans laquelle rendre visibles pu
 Il crée une page publique (pas d'authentification à Dolibarr nécessaire) que vous pouvez utiliser telle quelle ou plus probablement inclure dans votre site web.
 
 Dans le détail, le module permet de :
-- Classer les produits en fonction de leur catégorie (un onglet par catégorie)
+- Afficher les images des produits (nécessite un lien de partage public de l'image)
+- Classer les produits en fonction de leur catégorie (un onglet par catégorie), décider si vous voulez afficher les produits sans catégorie
 - Choisir les données que vous souhaitez afficher sur chaque produit (en particulier si les prix sont affichés TTC ou hors taxe)
 - Choisir d'afficher ou non les produits en rupture de stock
 - Utiliser un des thèmes visuels livrés avec le module

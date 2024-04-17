@@ -80,8 +80,9 @@ if (!\isModEnabled('product')) {
 $psProductDao = new ProductDAO($db);
 $psCategoryDao = new CategoryDAO($db);
 $psShowOutOfStock = (bool)($conf->global->PUBLICSTOCK_SHOW_OUT_OF_STOCK ?? false);
+$psShowWithoutImage = (bool)($conf->global->PUBLICSTOCK_SHOW_WITHOUT_IMAGE ?? false);
 $psCategories = $psCategoryDao->readProductCategories();
-$psProducts = $psProductDao->readProducts($psShowOutOfStock);
+$psProducts = $psProductDao->readProducts($psShowOutOfStock, $psShowWithoutImage);
 $psCurrencySymbol = $langs->getCurrencySymbol($conf->currency);
 $psTheme = $conf->global->PUBLICSTOCK_THEME ?? '';
 $psCss = $conf->global->PUBLICSTOCK_CSS ?? '';
