@@ -32,6 +32,10 @@
                     <ul class="ps_tabs">
                     <?php
                     foreach ($psProducts as $categoryId => $products) {
+						// Skip uncategorized products if option to display them is not set
+						if (!isset($psCategories[$categoryId]) && $psShowUncategorized === false) {
+							continue;
+						}
                         $categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
                         ?>
                         <li class="ps_tab_title">
@@ -42,6 +46,10 @@
                 <?php } ?>
             <?php
             foreach ($psProducts as $categoryId => $products) {
+				// Skip uncategorized products if option to display them is not set
+			    if (!isset($psCategories[$categoryId]) && $psShowUncategorized === false) {
+					continue;
+				}
                 $categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
                 ?>
                 <div class="ps_category" id="tab_<?= $categoryId ?>">

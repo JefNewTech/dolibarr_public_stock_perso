@@ -21,6 +21,7 @@ PUBLICSTOCK_SHOW_IMAGE = Toon afbeeldingen
 PUBLICSTOCK_SHOW_DESCRIPTION = Beschrijvingen weergeven
 PUBLICSTOCK_SHOW_STOCK = Toon aandelen
 PUBLICSTOCK_SHOW_NATURE = Producttypes weergeven
+PUBLICSTOCK_SHOW_UNCATEGORIZED = Show uncategorized products
 PUBLICSTOCK_THEME = Thema
 PUBLICSTOCK_THEME_HELP = Kies een thema, dat u kunt aanpassen door hieronder CSS-code toe te voegen, of selecteer "Geen" om volledig uw eigen thema te maken
 PUBLICSTOCK_CSS = Aangepaste CSS-code

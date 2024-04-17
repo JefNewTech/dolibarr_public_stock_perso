@@ -139,6 +139,10 @@ $item->setAsYesNo();
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_OUT_OF_STOCK');
 $item->setAsYesNo();
 
+// Show / hide out of stock products
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_UNCATEGORIZED');
+$item->setAsYesNo();
+
 $formSetup->newItem('PUBLICSTOCK_APPEARANCE')->setAsTitle();
 
 
