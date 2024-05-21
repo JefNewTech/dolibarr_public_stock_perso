@@ -51,6 +51,7 @@ class ProductDAO extends DAO
 					OR filename LIKE "%.xpm"
 					OR filename LIKE "%.xbm"
 				)
+			    AND share IS NOT NULL
 			    GROUP BY src_object_id
 			) AS file
 			ON file.src_object_id = p.rowid
