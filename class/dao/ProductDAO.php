@@ -37,20 +37,23 @@ class ProductDAO extends DAO
 		    AND n.active = 1
 			LEFT JOIN {$this->tablePrefix}categorie_product AS cp
 			ON cp.fk_product = p.rowid
-        	{$imageJoinType} JOIN {$this->tablePrefix}ecm_files AS file
-			ON src_object_type = 'product'
-			AND src_object_id = p.rowid
-			AND (
-				file.filename LIKE "%.gif"
-				OR file.filename LIKE "%.jpg"
-				OR file.filename LIKE "%.jpeg"
-				OR file.filename LIKE "%.png"
-				OR file.filename LIKE "%.bmp"
-				OR file.filename LIKE "%.webp"
-				OR file.filename LIKE "%.xpm"
-				OR file.filename LIKE "%.xbm"
-			)
-		    AND file.share IS NOT NULL
+        	{$imageJoinType} JOIN (
+				SELECT src_object_id, share
+				FROM {$this->tablePrefix}ecm_files
+				WHERE src_object_type = 'product'
+				AND (
+					filename LIKE "%.gif"
+					OR filename LIKE "%.jpg"
+					OR filename LIKE "%.jpeg"
+					OR filename LIKE "%.png"
+					OR filename LIKE "%.bmp"
+					OR filename LIKE "%.webp"
+					OR filename LIKE "%.xpm"
+					OR filename LIKE "%.xbm"
+				)
+			    ORDER BY position ASC, tms DESC
+			) AS file
+			ON file.src_object_id = p.rowid
 			WHERE tosell = 1
 			GROUP BY p.rowid
 			{$stockFilter};
