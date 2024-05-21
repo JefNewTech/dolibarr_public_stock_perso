@@ -23,8 +23,8 @@ class ProductDAO extends DAO
         $products = [];
         $stockFilter = $includeOutOfStock ? '' : 'HAVING stock > 0';
 
-		// If products without image are not to be displayed, an INNER JOIN on the images will exclude them
-		$imageJoinType = $includeWithoutImage ? 'LEFT' : 'INNER';
+        // If products without image are not to be displayed, an INNER JOIN on the images will exclude them
+        $imageJoinType = $includeWithoutImage ? 'LEFT' : 'INNER';
         $query = <<<SQL
         	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, p.price,
 			SUM(ps.reel) AS stock, n.label AS nature,
@@ -38,7 +38,7 @@ class ProductDAO extends DAO
 			LEFT JOIN {$this->tablePrefix}categorie_product AS cp
 			ON cp.fk_product = p.rowid
         	{$imageJoinType} JOIN (
-				SELECT src_object_id, share
+				SELECT src_object_id, GROUP_CONCAT(share ORDER BY position ASC, tms DESC) AS share
 				FROM {$this->tablePrefix}ecm_files
 				WHERE src_object_type = 'product'
 				AND (
@@ -51,7 +51,7 @@ class ProductDAO extends DAO
 					OR filename LIKE "%.xpm"
 					OR filename LIKE "%.xbm"
 				)
-			    ORDER BY position ASC, tms DESC
+			    GROUP BY src_object_id
 			) AS file
 			ON file.src_object_id = p.rowid
 			WHERE tosell = 1
@@ -63,6 +63,11 @@ SQL;
         while (\is_array($row)) {
             $rowid = (int)$row['rowid'];
             $categoryId = (int)($row['categoryId'] ?? -1);
+            if ($row['share'] !== null) {
+                $share = explode(',', $row['share'])[0];
+            } else {
+                $share = '';
+            }
             $products[$categoryId][$rowid] = new Product(
                 $row['productRef'],
                 $row['label'],
@@ -70,9 +75,9 @@ SQL;
                 (float)($row['price'] ?? 0.0),
                 (float)($row['price_ttc'] ?? 0.0),
                 (int)($row['stock'] ?? 0),
-                $row['share'] ?? '',
-				(int)($row['categoryId'] ?? Product::UNCATEGORIZED),
-				$row['nature'] ?? ''
+                $share,
+                (int)($row['categoryId'] ?? Product::UNCATEGORIZED),
+                $row['nature'] ?? ''
             );
             $row = $this->doliDB->fetch_array($result);
         }
