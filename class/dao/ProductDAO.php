@@ -28,7 +28,8 @@ class ProductDAO extends DAO
         $query = <<<SQL
         	SELECT p.rowid, p.ref AS productRef, p.description, p.label, p.price_ttc, p.price,
 			SUM(ps.reel) AS stock, n.label AS nature,
-            file.share, cp.fk_categorie AS categoryId
+            file.share, cp.fk_categorie AS categoryId,
+	    e.emplacement
             FROM {$this->tablePrefix}product AS p
             LEFT JOIN {$this->tablePrefix}product_stock AS ps
 			ON ps.fk_product = p.rowid
@@ -37,6 +38,7 @@ class ProductDAO extends DAO
 		    AND n.active = 1
 			LEFT JOIN {$this->tablePrefix}categorie_product AS cp
 			ON cp.fk_product = p.rowid
+			LEFT JOIN {$this->tablePrefix}product_extrafields AS e ON e.fk_object = p.rowid
         	{$imageJoinType} JOIN (
 				SELECT src_object_id, GROUP_CONCAT(share ORDER BY position ASC, tms DESC) AS share
 				FROM {$this->tablePrefix}ecm_files
@@ -78,7 +80,8 @@ SQL;
                 (int)($row['stock'] ?? 0),
                 $share,
                 (int)($row['categoryId'] ?? Product::UNCATEGORIZED),
-                $row['nature'] ?? ''
+                $row['nature'] ?? '',
+                $row['emplacement'] ?? ''  // Ajout de l'emplacement
             );
             $row = $this->doliDB->fetch_array($result);
         }

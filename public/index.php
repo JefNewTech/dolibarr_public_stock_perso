@@ -92,5 +92,7 @@ $psShowStock = (bool)($conf->global->PUBLICSTOCK_SHOW_STOCK ?? false);
 $psShowNature = (bool)($conf->global->PUBLICSTOCK_SHOW_NATURE ?? false);
 $psShowUncategorized = (bool)($conf->global->PUBLICSTOCK_SHOW_UNCATEGORIZED ?? false);
 $psPriceType = $conf->global->PUBLICSTOCK_SHOW_PRICE ?? '';
+$psShowEmplacement = (bool)($conf->global->PUBLICSTOCK_SHOW_EMPLACEMENT ?? false);
+
 
 require_once __DIR__ . '/../tpl/index.html.php';

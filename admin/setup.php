@@ -147,6 +147,10 @@ $item->setAsYesNo();
 $item = $formSetup->newItem('PUBLICSTOCK_SHOW_WITHOUT_IMAGE');
 $item->setAsYesNo();
 
+// Show / hide product location (emplacement)
+$item = $formSetup->newItem('PUBLICSTOCK_SHOW_EMPLACEMENT');
+$item->setAsYesNo();
+
 $formSetup->newItem('PUBLICSTOCK_APPEARANCE')->setAsTitle();
 
 // CSS theme

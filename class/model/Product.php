@@ -32,6 +32,8 @@ class Product
 
     protected $nature;
 
+    protected $emplacement;
+
     /**
      * Constructor
      *
@@ -55,7 +57,8 @@ class Product
         int $stock,
         string $imageShare,
         int $categoryId,
-        string $nature
+        string $nature,
+        string $emplacement
     ) {
         $this->reference = $reference;
         $this->label = $label;
@@ -66,6 +69,7 @@ class Product
         $this->imageShare = $imageShare;
         $this->categoryId = $categoryId;
         $this->nature = $nature;
+        $this->emplacement = $emplacement;
     }
 
     /**
@@ -156,5 +160,10 @@ class Product
     public function getNature(): string
     {
         return $this->nature;
+    }
+    
+    public function getEmplacement(): string
+    {
+	return $this->emplacement;
     }
 }

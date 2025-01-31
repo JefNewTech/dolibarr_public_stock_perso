@@ -2,17 +2,17 @@
 # Generic
 #
 ModulePublicStockName = Stock Public
-ModulePublicStockDesc = Créez une page publique de produits à vendre
-Uncategorized = Sans catégorie
-NoProductToDisplay = Aucun produit à afficher
+ModulePublicStockDesc = CrÃ©ez une page publique de produits Ã  vendre
+Uncategorized = Sans catÃ©gorie
+NoProductToDisplay = Aucun produit Ã  afficher
 
 #
 # Admin page
 #
-PublicStockSetup = Paramètres du Stock Public
-Settings = Paramètres
-PublicStockSetupPage = Définissez le contenu et l'apparence de votre page publique de produits,
-PublicStockTry = puis testez-là
+PublicStockSetup = ParamÃ¨tres du Stock Public
+Settings = ParamÃ¨tres
+PublicStockSetupPage = DÃ©finissez le contenu et l'apparence de votre page publique de produits,
+PublicStockTry = puis testez-lÃ 
 PUBLICSTOCK_TITLE = Titre de la page
 PUBLICSTOCK_SHOW_OUT_OF_STOCK = Afficher les produits actuellement en rupture de stock
 PUBLICSTOCK_SHOW_PRICE = Afficher les prix
@@ -21,11 +21,12 @@ PUBLICSTOCK_SHOW_IMAGE = Afficher les images
 PUBLICSTOCK_SHOW_DESCRIPTION = Afficher les descriptions
 PUBLICSTOCK_SHOW_STOCK = Afficher les stocks
 PUBLICSTOCK_SHOW_NATURE = Afficher les natures de produits
-PUBLICSTOCK_SHOW_UNCATEGORIZED = Afficher les produits sans catégorie
+PUBLICSTOCK_SHOW_UNCATEGORIZED = Afficher les produits sans catÃ©gorie
 PUBLICSTOCK_SHOW_WITHOUT_IMAGE = Afficher les produits sans image
-PUBLICSTOCK_THEME = Thème
-PUBLICSTOCK_THEME_HELP = Choisissez un thème, que vous pouvez personnaliser en ajoutant du code CSS ci-dessous, ou sélectionnez "Aucun" pour créer entièrement votre propre thème
-PUBLICSTOCK_CSS = Code CSS personnalisé
-PUBLICSTOCK_CSS_HELP = Ajoutez votre propre code CSS pour personnaliser ou créer votre thème
+PUBLICSTOCK_SHOW_EMPLACEMENT = Afficher l emplacement des produits
+PUBLICSTOCK_THEME = ThÃ¨me
+PUBLICSTOCK_THEME_HELP = Choisissez un thÃ¨me, que vous pouvez personnaliser en ajoutant du code CSS ci-dessous, ou sÃ©lectionnez "Aucun" pour crÃ©er entiÃ¨rement votre propre thÃ¨me
+PUBLICSTOCK_CSS = Code CSS personnalisÃ©
+PUBLICSTOCK_CSS_HELP = Ajoutez votre propre code CSS pour personnaliser ou crÃ©er votre thÃ¨me
 PUBLICSTOCK_CONTENT = Contenu de la page
 PUBLICSTOCK_APPEARANCE = Apparence de la page
