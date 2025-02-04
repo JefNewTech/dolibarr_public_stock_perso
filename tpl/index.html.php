@@ -16,24 +16,24 @@ if ($psCss !== '') {
         } else {
             $uncategorizedLabel = $langs->trans('Uncategorized');
 
-            // Enable categories tabs only if there is more than one category
-            if (\count($psProducts) > 1) {
-                $withCategories = true;
-                $cssCategories = 'ps_withCategories';
-            } else {
-                $withCategories = false;
-                $cssCategories = 'ps_withoutCategories';
+            // Trier les catégories par ordre alphabétique
+            $sortedCategories = [];
+            foreach ($psProducts as $categoryId => $products) {
+                if (isset($psCategories[$categoryId]) || $psShowUncategorized) {
+                    $sortedCategories[$categoryId] = $psCategories[$categoryId] ?? $uncategorizedLabel;
+                }
             }
+            asort($sortedCategories);
             ?>
-            <div id="ps_categories" class="<?= $cssCategories ?>">
+            <div id="ps_categories" class="ps_withCategories">
                 <!-- ✅ Onglet de recherche ajouté -->
                 <ul class="ps_tabs">
                     <li class="ps_tab_title">
                         <a href="#tab_search"><?= $langs->trans('Recherche') ?></a>
                     </li>
-                    <?php foreach ($psProducts as $categoryId => $products) { ?>
+                    <?php foreach ($sortedCategories as $categoryId => $categoryLabel) { ?>
                         <li class="ps_tab_title">
-                            <a href="#tab_<?= $categoryId ?>"><?= $psCategories[$categoryId] ?? $uncategorizedLabel ?></a>
+                            <a href="#tab_<?= $categoryId ?>"><?= $categoryLabel ?></a>
                         </li>
                     <?php } ?>
                 </ul>
@@ -44,84 +44,74 @@ if ($psCss !== '') {
                     <div id="search_results"></div>
                 </div>
 
-                <!-- ✅ Contenu des autres onglets -->
-<?php
-foreach ($psProducts as $categoryId => $products) {
-    // Skip uncategorized products if option to display them is not set
-    if (!isset($psCategories[$categoryId]) && $psShowUncategorized === false) {
-        continue;
-    }
-    $categoryLabel = $psCategories[$categoryId] ?? $uncategorizedLabel;
-    ?>
-    <div class="ps_category" id="tab_<?= $categoryId ?>">
-        <?php
-        foreach ($products as $product) {
-            // ✅ Construction dynamique de l'URL de l'image
-            $imageFolder = DOL_DOCUMENT_ROOT . '/documents/produit/' . $product->getReference() . '/';
-            $imageURLBase = DOL_URL_ROOT . '/documents/produit/' . $product->getReference() . '/';
+                <!-- ✅ Contenu des autres onglets triés -->
+                <?php foreach ($sortedCategories as $categoryId => $categoryLabel) { ?>
+                    <div class="ps_category" id="tab_<?= $categoryId ?>">
+                        <?php foreach ($psProducts[$categoryId] as $product) { ?>
+                            <div class="ps_product">
+                                <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
+                                <p class="ps_product_ref"><?= '(' . $product->getReference() . ')' ?></p>
+                                <!-- ✅ Image ajoutée -->
+                                <div class="ps_product_image_desc">
+                                    <div class="ps_product_image_block">
+                                        <?php
+                                        $imageFolder = DOL_DOCUMENT_ROOT . '/documents/produit/' . $product->getReference() . '/';
+                                        $imageURLBase = DOL_URL_ROOT . '/documents/produit/' . $product->getReference() . '/';
 
-            $imageFile = '';
-            if (is_dir($imageFolder)) {
-                $files = scandir($imageFolder);
-                foreach ($files as $file) {
-                    if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $file)) {
-                        $imageFile = $file; // ✅ Utiliser la première image trouvée
-                        break;
-                    }
-                }
-            }
-
-            $imageURL = !empty($imageFile) ? $imageURLBase . $imageFile : DOL_URL_ROOT . '/theme/common/nophoto.png';
-
-            ?>
-            <div class="ps_product">
-                <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
-                <p class="ps_product_ref"><?= '(' . $product->getReference() . ')' ?></p>
-                <!-- ✅ Image ajoutée -->
-                <div class="ps_product_image_desc">
-                    <div class="ps_product_image_block">
-                        <img class="ps_product_image" alt="Product image"
-                             src="<?= $imageURL ?>" style="max-width:150px; max-height:150px;">
+                                        $imageFile = '';
+                                        if (is_dir($imageFolder)) {
+                                            $files = scandir($imageFolder);
+                                            foreach ($files as $file) {
+                                                if (preg_match('/\.(jpg|jpeg|png|gif|webp)$/i', $file)) {
+                                                    $imageFile = $file;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                        $imageURL = !empty($imageFile) ? $imageURLBase . $imageFile : DOL_URL_ROOT . '/theme/common/nophoto.png';
+                                        ?>
+                                        <img class="ps_product_image" alt="Product image"
+                                             src="<?= $imageURL ?>" style="max-width:150px; max-height:150px;">
+                                    </div>
+                                </div>
+                                <ul class="ps_product_other">
+                                    <?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
+                                        <li class="ps_product_price">
+                                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label>
+                                            <span><?= $product->getPriceTTC() . $psCurrencySymbol ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
+                                        <li class="ps_product_price">
+                                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label>
+                                            <span><?= \round($product->getPrice(), 2) ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psShowStock) { ?>
+                                        <li class="ps_product_stock">
+                                            <label><?= $langs->trans('Stock') ?></label>
+                                            <span><?= \round($product->getStock(), 2) ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psShowEmplacement) { ?>
+                                        <li class="ps_product_emplacement">
+                                            <label><?= $langs->trans('Emplacement') ?></label>
+                                            <span>
+                                                <?= !empty($product->getEmplacement()) ? htmlspecialchars($product->getEmplacement()) : $langs->trans('NotDefined') ?>
+                                            </span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psShowNature) { ?>
+                                        <li class="ps_product_finished">
+                                            <label><?= $langs->trans('NatureOfProductShort') ?></label>
+                                            <span><?= $langs->trans($product->getNature()) ?></span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </div>
+                        <?php } ?>
                     </div>
-                </div>
-                <ul class="ps_product_other">
-                    <?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
-                        <li class="ps_product_price">
-                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label>
-                            <span><?= $product->getPriceTTC() . $psCurrencySymbol ?></span>
-                        </li>
-                    <?php } ?>
-                    <?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
-                        <li class="ps_product_price">
-                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label>
-                            <span><?= \round($product->getPrice(), 2) ?></span>
-                        </li>
-                    <?php } ?>
-                    <?php if ($psShowStock) { ?>
-                        <li class="ps_product_stock">
-                            <label><?= $langs->trans('Stock') ?></label>
-                            <span><?= \round($product->getStock(), 2) ?></span>
-                        </li>
-                    <?php } ?>
-                    <?php if ($psShowEmplacement) { ?>
-                        <li class="ps_product_emplacement">
-                            <label><?= $langs->trans('Emplacement') ?></label>
-                            <span>
-                                <?= !empty($product->getEmplacement()) ? htmlspecialchars($product->getEmplacement()) : $langs->trans('NotDefined') ?>
-                            </span>
-                        </li>
-                    <?php } ?>
-                    <?php if ($psShowNature) { ?>
-                        <li class="ps_product_finished">
-                            <label><?= $langs->trans('NatureOfProductShort') ?></label>
-                            <span><?= $langs->trans($product->getNature()) ?></span>
-                        </li>
-                    <?php } ?>
-                </ul>
-            </div>
-        <?php } ?>
-    </div>
-<?php } ?>
+                <?php } ?>
             </div>
         <?php } ?>
     </section>
@@ -159,7 +149,7 @@ function filterProducts() {
         return;
     }
 
-    let foundProducts = new Set(); // ✅ Utilisation d'un Set pour éviter les doublons
+    let foundProducts = new Set();
 
     // Vérifier chaque produit dans toutes les catégories
     products.forEach(function (product) {
@@ -169,10 +159,8 @@ function filterProducts() {
             var normalizedLabel = productLabel.toUpperCase().trim();
 
             if (normalizedLabel.includes(filter) && !foundProducts.has(productLabel)) {
-                // ✅ Ajouter au Set pour éviter les doublons
                 foundProducts.add(productLabel);
 
-                // ✅ Cloner le produit et l'ajouter aux résultats
                 let clonedProduct = product.cloneNode(true);
                 searchResults.appendChild(clonedProduct);
             }
@@ -186,8 +174,8 @@ function filterProducts() {
 
     // ✅ Rendre visible la section des résultats
     searchResults.style.display = "flex";
-    searchResults.style.flexWrap = "wrap"; // ✅ Mise en grille
-    searchResults.style.gap = "10px"; // ✅ Espacement entre les produits
+    searchResults.style.flexWrap = "wrap";
+    searchResults.style.gap = "10px";
 }
 </script>
 </body>
