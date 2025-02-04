@@ -107,10 +107,12 @@ if ($psCss !== '') {
 
                 <!-- ✅ Contenu de l'onglet "Recherche" -->
                 <div class="ps_category" id="tab_search">
-                    <input type="text" id="productSearch" placeholder="Rechercher un produit..." onkeyup="filterProducts()" style="width: 100%; padding: 10px; margin-bottom: 20px;">
-                    <div id="search_results"></div>
-                </div>
-
+                    <div class="search-container">
+                        <button class="clear-btn" onclick="clearSearch()">&#x1F9F9;</button>
+                        <input type="text" id="productSearch" class="search-input" placeholder="Rechercher un produit..." onkeyup="filterProducts()">
+                    </div>
+		</div>
+                <div id="search_results"></div>
                 <!-- ✅ Contenu des autres onglets triés -->
                 <?php foreach ($sortedCategories as $categoryId => $categoryLabel) { ?>
                     <div class="ps_category" id="tab_<?= $categoryId ?>">
@@ -267,6 +269,13 @@ function filterProducts() {
     searchResults.style.display = "flex";
     searchResults.style.flexWrap = "wrap";
     searchResults.style.gap = "10px";
+}
+</script>
+<!-- ✅ Script pour effacer la recherche -->
+<script>
+function clearSearch() {
+    document.getElementById("productSearch").value = "";
+    filterProducts();
 }
 </script>
 </body>
