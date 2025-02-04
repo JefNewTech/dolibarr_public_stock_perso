@@ -8,14 +8,14 @@ if ($psCss !== '') {
 }
 ?>
 <style>
-/* ✅ Assurer que les images sont bien ajustées dans leur cadre */
+/* ✅ Styles pour les images responsives */
 .ps_product_image_block {
     width: 100%;
     height: auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: hidden; /* Empêche les débordements */
+    overflow: hidden;
     max-width: 200px;
     max-height: 200px;
 }
@@ -23,19 +23,14 @@ if ($psCss !== '') {
 .ps_product_image {
     width: 100%;
     height: auto;
-    object-fit: contain; /* ✅ Garde les proportions sans déformation */
+    object-fit: contain;
     max-width: 100%;
     max-height: 100%;
     transition: transform 0.3s ease-in-out;
     cursor: pointer;
 }
 
-/* ✅ Effet au survol */
-.ps_product_image:hover {
-    transform: scale(1.05);
-}
-
-/* ✅ Conteneur de la Lightbox */
+/* ✅ Lightbox */
 .lightbox {
     display: none;
     position: fixed;
@@ -78,6 +73,7 @@ if ($psCss !== '') {
     color: red;
 }
 </style>
+
 <body>
 <article class="ps_main">
     <section>
@@ -97,7 +93,7 @@ if ($psCss !== '') {
             asort($sortedCategories);
             ?>
             <div id="ps_categories" class="ps_withCategories">
-                <!-- ✅ Onglet de recherche ajouté -->
+                <!-- ✅ Onglet de recherche -->
                 <ul class="ps_tabs">
                     <li class="ps_tab_title">
                         <a href="#tab_search"><?= $langs->trans('Recherche') ?></a>
@@ -122,7 +118,8 @@ if ($psCss !== '') {
                             <div class="ps_product">
                                 <h3 class="ps_product_label"><?= $product->getLabel() ?></h3>
                                 <p class="ps_product_ref"><?= '(' . $product->getReference() . ')' ?></p>
-                                <!-- ✅ Image responsive et cliquable -->
+
+                                <!-- ✅ Image cliquable -->
                                 <div class="ps_product_image_desc">
                                     <div class="ps_product_image_block">
                                         <?php
@@ -145,6 +142,36 @@ if ($psCss !== '') {
                                              src="<?= $imageURL ?>" onclick="openLightbox(this)">
                                     </div>
                                 </div>
+
+                                <!-- ✅ Détails du produit -->
+                                <ul class="ps_product_other">
+                                    <?php if ($psPriceType === 'included' || $psPriceType === 'both') { ?>
+                                        <li class="ps_product_price">
+                                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('TTC') . ')' ?></label>
+                                            <span><?= $product->getPriceTTC() . $psCurrencySymbol ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psPriceType === 'excluded' || $psPriceType === 'both') { ?>
+                                        <li class="ps_product_price">
+                                            <label><?= $langs->trans('Price') . ' (' . $langs->trans('HT') . ')' ?></label>
+                                            <span><?= \round($product->getPrice(), 2) ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psShowStock) { ?>
+                                        <li class="ps_product_stock">
+                                            <label><?= $langs->trans('Stock') ?></label>
+                                            <span><?= \round($product->getStock(), 2) ?></span>
+                                        </li>
+                                    <?php } ?>
+                                    <?php if ($psShowEmplacement) { ?>
+                                        <li class="ps_product_emplacement">
+                                            <label><?= $langs->trans('Emplacement') ?></label>
+                                            <span>
+                                                <?= !empty($product->getEmplacement()) ? htmlspecialchars($product->getEmplacement()) : $langs->trans('NotDefined') ?>
+                                            </span>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
                             </div>
                         <?php } ?>
                     </div>
@@ -154,13 +181,13 @@ if ($psCss !== '') {
     </section>
 </article>
 
-<!-- ✅ Lightbox pour afficher l'image en grand -->
+<!-- ✅ Lightbox -->
 <div id="lightbox" class="lightbox">
     <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
     <img id="lightbox-img" src="" alt="Agrandissement de l'image">
 </div>
 
-<!-- ✅ Script pour gérer la Lightbox et la recherche -->
+<!-- ✅ Scripts -->
 <script>
 function openLightbox(imgElement) {
     var lightbox = document.getElementById("lightbox");
@@ -174,13 +201,15 @@ function closeLightbox() {
     document.getElementById("lightbox").style.display = "none";
 }
 
-// ✅ Fermer la lightbox en cliquant en dehors de l'image
 document.getElementById("lightbox").addEventListener("click", function(event) {
     if (event.target === this) {
         closeLightbox();
     }
 });
+</script>
 
+<!-- ✅ Script pour filtrer les produits -->
+<script>
 document.addEventListener("DOMContentLoaded", function () {
     var searchInput = document.getElementById("productSearch");
 
@@ -198,8 +227,14 @@ function filterProducts() {
     var products = document.querySelectorAll(".ps_product");
     var searchResults = document.getElementById("search_results");
 
+    // Activer l'onglet "Recherche" et garder le focus
+    document.querySelector("a[href='#tab_search']").click();
+    setTimeout(() => { input.focus(); }, 100);
+
+    // ✅ Vider les résultats pour éviter les doublons
     searchResults.innerHTML = "";
 
+    // Si le champ est vide, masquer la section des résultats
     if (filter === "") {
         searchResults.style.display = "none";
         return;
@@ -207,18 +242,31 @@ function filterProducts() {
 
     let foundProducts = new Set();
 
+    // Vérifier chaque produit dans toutes les catégories
     products.forEach(function (product) {
         var productLabelElement = product.querySelector(".ps_product_label");
         if (productLabelElement) {
-            var productLabel = productLabelElement.textContent.toUpperCase().trim();
-            if (productLabel.includes(filter) && !foundProducts.has(productLabel)) {
+            var productLabel = productLabelElement.textContent || productLabelElement.innerText;
+            var normalizedLabel = productLabel.toUpperCase().trim();
+
+            if (normalizedLabel.includes(filter) && !foundProducts.has(productLabel)) {
                 foundProducts.add(productLabel);
-                searchResults.appendChild(product.cloneNode(true));
+
+                let clonedProduct = product.cloneNode(true);
+                searchResults.appendChild(clonedProduct);
             }
         }
     });
 
-    searchResults.style.display = foundProducts.size > 0 ? "flex" : "none";
+    // Afficher un message si aucun produit n'est trouvé
+    if (foundProducts.size === 0) {
+        searchResults.innerHTML = "<p style='color: red;'>Aucun produit trouvé.</p>";
+    }
+
+    // ✅ Rendre visible la section des résultats
+    searchResults.style.display = "flex";
+    searchResults.style.flexWrap = "wrap";
+    searchResults.style.gap = "10px";
 }
 </script>
 </body>
